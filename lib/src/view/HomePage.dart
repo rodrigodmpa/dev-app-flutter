@@ -14,7 +14,7 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 56, 0, 52),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 52),
             child: Center(
               child: Text(
                 "Olá!",
@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
             text: "Qual o seu interesse?",
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 44, 0, 12),
+            padding: EdgeInsets.fromLTRB(0, 24, 0, 12),
             child: new ButtonWidget(text: "ADOTAR"),
           ),
           Padding(
@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
             child: new ButtonWidget(text: "AJUDAR"),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 44),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
             child: new ButtonWidget(text: "CADASTRAR ANMAL"),
           ),
           FlatButton(
@@ -63,7 +63,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 68, 0, 32),
+            padding: EdgeInsets.fromLTRB(0, 38, 0, 32),
             child: Container(
               height: 44,
               decoration: BoxDecoration(
