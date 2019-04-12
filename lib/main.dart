@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'src/view/HomePage.dart';
+import 'src/view/MainScreen.dart';
+import 'src/view/AdotarScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MyHomePage(),
+        '/main': (context) => MainScreen(),
+        '/adotar': (context)=> AdotarScreen(),
       }
     );
   }

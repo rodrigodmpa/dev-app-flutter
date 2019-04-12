@@ -16,13 +16,14 @@ class MyHomePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.fromLTRB(0, 56, 0, 52),
             child: Center(
-                child: Text(
-              "Olá!",
-              style: TextStyle(
-                  fontSize: 72,
-                  color: Color(0xffffd358),
-                  fontFamily: "Courgette Regular"),
-            )),
+              child: Text(
+                "Olá!",
+                style: TextStyle(
+                    fontSize: 72,
+                    color: Color(0xffffd358),
+                    fontFamily: "Courgette Regular"),
+              ),
+            ),
           ),
           new TextWidget(
             text: "Bem vindo ao Meau!",
@@ -49,6 +50,12 @@ class MyHomePage extends StatelessWidget {
             child: new ButtonWidget(text: "CADASTRAR ANMAL"),
           ),
           FlatButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/main',
+              );
+            },
             child: Text(
               "login",
               style: TextStyle(
