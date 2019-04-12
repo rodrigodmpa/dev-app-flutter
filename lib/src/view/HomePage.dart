@@ -63,7 +63,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 38, 0, 32),
+            padding: EdgeInsets.fromLTRB(0, 18, 0, 12),
             child: Container(
               height: 44,
               decoration: BoxDecoration(
