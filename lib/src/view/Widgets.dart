@@ -34,7 +34,11 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(
+        context,
+        '/adotar',
+      );},
       color: Color(0xffffd358),
       child: Container(
         width: 232,
