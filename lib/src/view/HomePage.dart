@@ -1,9 +1,16 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'Widgets.dart';
 
 class MyHomePage extends StatelessWidget {
+
+  MediaQueryData queryData;
+  
   @override
   Widget build(BuildContext context) {
+    queryData = MediaQuery.of(context);
+    double devicePixelRatio = queryData.devicePixelRatio;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -38,7 +45,7 @@ class MyHomePage extends StatelessWidget {
             text: "Qual o seu interesse?",
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 24, 0, 12),
+            padding: EdgeInsets.fromLTRB(0, 48/devicePixelRatio, 0, 12),
             child: new ButtonWidget(text: "ADOTAR",rota: '/adotar'),
           ),
           Padding(
