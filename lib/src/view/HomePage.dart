@@ -14,7 +14,7 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 52),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
             child: Center(
               child: Text(
                 "Olá!",
