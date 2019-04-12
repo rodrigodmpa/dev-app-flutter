@@ -26,10 +26,11 @@ class TextWidget extends StatelessWidget {
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
     Key key,
-    this.text,
+    this.text, this.rota,
   }) : super(key: key);
 
   final String text;
+  final String rota;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class ButtonWidget extends StatelessWidget {
       onPressed: () {
         Navigator.pushNamed(
         context,
-        '/adotar',
+        rota,
       );},
       color: Color(0xffffd358),
       child: Container(

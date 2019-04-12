@@ -39,15 +39,15 @@ class MyHomePage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 24, 0, 12),
-            child: new ButtonWidget(text: "ADOTAR"),
+            child: new ButtonWidget(text: "ADOTAR",rota: '/adotar'),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
-            child: new ButtonWidget(text: "AJUDAR"),
+            child: new ButtonWidget(text: "AJUDAR",rota: '/ajudar'),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
-            child: new ButtonWidget(text: "CADASTRAR ANMAL"),
+            child: new ButtonWidget(text: "CADASTRAR ANMAL",rota: '/cad_animal'),
           ),
           FlatButton(
             onPressed: () {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'src/view/HomePage.dart';
 import 'src/view/MainScreen.dart';
 import 'src/view/AdotarScreen.dart';
+import 'src/view/AjudarScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => MyHomePage(),
         '/main': (context) => MainScreen(),
         '/adotar': (context)=> AdotarScreen(),
+        '/ajudar': (context) => AjudarScreen(),
       }
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AdotarScreen extends StatelessWidget {
+class AjudarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,14 +8,15 @@ class AdotarScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      drawer:  Drawer(),
-      body: Column(
-        children: <Widget>[
-          Center(
-            child: Text("Adotar"),
-  
+      drawer: Drawer(),
+      body: Center(
+        child: Text(
+          "Ajudar",
+          style: TextStyle(
+            fontSize: 72,
+            color: Color(0xFFABCDFA),
           ),
-        ],
+        ),
       ),
     );
   }
