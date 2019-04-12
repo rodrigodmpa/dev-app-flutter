@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'Widgets.dart';
+import '../util/MyFunctions.dart';
 
 class MyHomePage extends StatelessWidget {
 
@@ -21,7 +22,7 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
+            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(46, devicePixelRatio), 0, Dp2Pixel(52, devicePixelRatio)),
             child: Center(
               child: Text(
                 "Olá!",
@@ -45,15 +46,15 @@ class MyHomePage extends StatelessWidget {
             text: "Qual o seu interesse?",
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 48/devicePixelRatio, 0, 12),
+            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48,devicePixelRatio), 0, Dp2Pixel(12, devicePixelRatio)),
             child: new ButtonWidget(text: "ADOTAR",rota: '/adotar'),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(12, devicePixelRatio)),
             child: new ButtonWidget(text: "AJUDAR",rota: '/ajudar'),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 24),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(44, devicePixelRatio)),
             child: new ButtonWidget(text: "CADASTRAR ANMAL",rota: '/cad_animal'),
           ),
           FlatButton(
@@ -70,7 +71,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 18, 0, 12),
+            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(68, devicePixelRatio), 0, Dp2Pixel(32, devicePixelRatio)),
             child: Container(
               height: 44,
               decoration: BoxDecoration(
