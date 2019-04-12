@@ -8,7 +8,6 @@ class MainScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      drawer:  Drawer(),
       body: Center(
         child: Text("Login")
       ),
