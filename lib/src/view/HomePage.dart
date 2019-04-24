@@ -55,7 +55,7 @@ class MyHomePage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(44, devicePixelRatio)),
-            child: new ButtonWidget(text: "CADASTRAR ANMAL",rota: '/cad_animal'),
+            child: new ButtonWidget(text: "CADASTRAR ANIMAL",rota: '/cad_animal'),
           ),
           FlatButton(
             onPressed: () {
