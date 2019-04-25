@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../util/colors.dart';
 class TextWidget extends StatelessWidget {
   const TextWidget({
     Key key,
@@ -40,7 +40,7 @@ class ButtonWidget extends StatelessWidget {
         context,
         rota,
       );},
-      color: Color(0xffffd358),
+      color: primaryLightColor,
       child: Container(
         width: 232,
         height: 40,

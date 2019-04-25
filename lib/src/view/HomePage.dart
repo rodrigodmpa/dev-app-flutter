@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'Widgets.dart';
 import '../util/MyFunctions.dart';
+import '../util/colors.dart';
 
 class MyHomePage extends StatelessWidget {
 
@@ -28,7 +29,7 @@ class MyHomePage extends StatelessWidget {
                 "Olá!",
                 style: TextStyle(
                     fontSize: 72,
-                    color: Color(0xffffd358),
+                    color: primaryColor,
                     fontFamily: "Courgette Regular"),
               ),
             ),
