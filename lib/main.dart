@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'src/view/HomePage.dart';
-import 'src/view/MainScreen.dart';
+import 'src/view/LoginScreen.dart';
 import 'src/view/AdotarScreen.dart';
 import 'src/view/AjudarScreen.dart';
 import 'src/view/CadAnimalScreen.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MyHomePage(),
-        '/main': (context) => MainScreen(),
+        '/main': (context) => LoginScreen(),
         '/adotar': (context)=> AdotarScreen(),
         '/ajudar': (context) => AjudarScreen(),
         '/cad_animal': (context) => CadAnimalScreen(),
