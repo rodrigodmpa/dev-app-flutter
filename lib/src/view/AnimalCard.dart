@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
+import '../util/colors.dart';
 
 class AnimalCard extends StatefulWidget {
-  AnimalCard({Key key, this.name = "troll", this.pictureRoute = "troll", this.sex = "troll", this.age = "troll", this.size = "troll", this.address = "troll"}) : super(key: key);
+  AnimalCard({Key key, this.name = "troll", this.pictureRoute = "asset/dog1.jpeg", this.sex = "troll", this.age = "troll", this.size = "troll", this.address = "troll"}) : super(key: key);
 
   final String name, pictureRoute, sex, age, size, address;
 
@@ -17,12 +18,16 @@ class _AnimalCardState extends State<AnimalCard> {
   Widget build(BuildContext context) {
     queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;
-    double sizeOfScreen = queryData.size.width - 8;
+    double sizeOfWidthScreen = queryData.size.width - 8;
+    double sizeOfHeightScreen = queryData.size.height;
     return Card(
       child: Column(
         children: <Widget>[
           Container(
-            color: Colors.yellow,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
+              color: primaryLightColor,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -38,17 +43,18 @@ class _AnimalCardState extends State<AnimalCard> {
             ),
           ),
           Container(
-            height: 44,
+            height: sizeOfHeightScreen/3.5,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('asset/Meau_marca_2.png'),
+                image: AssetImage(widget.pictureRoute),
+                fit: BoxFit.fill,
               ),
             ),
           ),
           Row(
             children: <Widget>[
               Container(
-                width: sizeOfScreen / 3,
+                width: sizeOfWidthScreen / 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -57,7 +63,7 @@ class _AnimalCardState extends State<AnimalCard> {
                 ),
               ),
               Container(
-                width: sizeOfScreen / 3,
+                width: sizeOfWidthScreen / 3,
                 child: Column(
                   children: <Widget>[
                     Center(child: Text(widget.age)),
@@ -65,7 +71,7 @@ class _AnimalCardState extends State<AnimalCard> {
                 ),
               ),
               Container(
-                width: sizeOfScreen / 3,
+                width: sizeOfWidthScreen / 3,
                 child: Column(
                   children: <Widget>[
                     Center(child: Text(widget.size)),
