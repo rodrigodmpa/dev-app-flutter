@@ -22,7 +22,7 @@ class CadAnimalScreen extends StatelessWidget {
           Center(child: Text("possuir um cadastro"),),
           Padding(
             padding: EdgeInsets.fromLTRB(0, Dp2Pixel(16,devicePixelRatio), 0, Dp2Pixel(44, devicePixelRatio)),
-            child: ButtonWidget(text: "Fazer cadastro",rota: ''),
+            child: ButtonWidget(text: "Fazer cadastro",rota: '/cad_pessoa'),
           ),
           Center(child: Text("Já possui cadastro?"),),
           Padding(

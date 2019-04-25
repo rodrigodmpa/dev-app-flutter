@@ -4,6 +4,7 @@ import 'src/view/MainScreen.dart';
 import 'src/view/AdotarScreen.dart';
 import 'src/view/AjudarScreen.dart';
 import 'src/view/CadAnimalScreen.dart';
+import 'src/view/CadPessoaScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/adotar': (context)=> AdotarScreen(),
         '/ajudar': (context) => AjudarScreen(),
         '/cad_animal': (context) => CadAnimalScreen(),
+        '/cad_pessoa': (context) => CadPessoaScreen()
       }
     );
   }
