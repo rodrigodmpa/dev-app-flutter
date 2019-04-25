@@ -55,3 +55,29 @@ class ButtonWidget extends StatelessWidget {
     );
   }
 }
+
+class MyTextField extends StatelessWidget {
+  const MyTextField({
+    Key key, this.hint,
+  }) : super(key: key);
+
+  final String hint;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: hint,
+          border: UnderlineInputBorder()
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter some text';
+          }
+        },
+      ),
+    );
+  }
+}
