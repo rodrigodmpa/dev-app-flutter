@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
 
 class AnimalCard extends StatefulWidget {
-  AnimalCard({Key key}) : super(key: key);
+  AnimalCard({Key key, this.name = "troll", this.pictureRoute = "troll", this.sex = "troll", this.age = "troll", this.size = "troll", this.address = "troll"}) : super(key: key);
+
+  final String name, pictureRoute, sex, age, size, address;
 
   @override
   _AnimalCardState createState() => _AnimalCardState();
@@ -26,7 +28,7 @@ class _AnimalCardState extends State<AnimalCard> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
-                  child: Text("Pequi"),
+                  child: Text(widget.name),
                 ),
                 IconButton(
                   icon: Icon(Icons.favorite),
@@ -50,7 +52,7 @@ class _AnimalCardState extends State<AnimalCard> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Center(child: Text("Rodrigo")),
+                    Center(child: Text(widget.sex)),
                   ],
                 ),
               ),
@@ -58,7 +60,7 @@ class _AnimalCardState extends State<AnimalCard> {
                 width: sizeOfScreen / 3,
                 child: Column(
                   children: <Widget>[
-                    Center(child: Text("É")),
+                    Center(child: Text(widget.age)),
                   ],
                 ),
               ),
@@ -66,7 +68,7 @@ class _AnimalCardState extends State<AnimalCard> {
                 width: sizeOfScreen / 3,
                 child: Column(
                   children: <Widget>[
-                    Center(child: Text("Vacilão")),
+                    Center(child: Text(widget.size)),
                   ],
                 ),
               ),
@@ -75,7 +77,7 @@ class _AnimalCardState extends State<AnimalCard> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
-              child: Text("Samabaia sul- df"),
+              child: Text(widget.address),
             ),
           ),
         ],

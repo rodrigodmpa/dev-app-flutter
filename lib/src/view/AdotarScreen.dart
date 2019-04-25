@@ -10,11 +10,19 @@ class AdotarScreen extends StatelessWidget {
         title: Text("Adotar"),
         elevation: 4,
       ),
-      drawer:  Drawer(),
-      body: Column(
-        children: <Widget>[
-          AnimalCard(),
-        ],
+      drawer: Drawer(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            AnimalCard(address: "SQN 404", age: "18", name: "Pequi", pictureRoute: "nada", sex: "Male", size: "Medium",),
+            AnimalCard(),
+            AnimalCard(),
+            AnimalCard(),
+            AnimalCard(),
+            AnimalCard(),
+            AnimalCard(),
+          ],
+        ),
       ),
     );
   }
