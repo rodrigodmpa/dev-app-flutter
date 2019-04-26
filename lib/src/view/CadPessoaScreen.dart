@@ -30,7 +30,8 @@ class CadPessoaScreen extends StatelessWidget {
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("As informações preenchidas serão divulgadas\n apenas para a pessoa com a qual você realizar\n o processo de adoção e/ou apadrinhamento,\n após a formalização do processo."),
+                    child: Text(
+                        "As informações preenchidas serão divulgadas\n apenas para a pessoa com a qual você realizar\n o processo de adoção e/ou apadrinhamento,\n após a formalização do processo."),
                   ),
                 ),
               ),
@@ -74,7 +75,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           Padding(
             padding:
                 EdgeInsets.fromLTRB(20, 30, 0, Dp2Pixel(32, devicePixelRatio)),
-            child: Text("INFORMAÇÕES PESSOAIS", style: TextStyle(color: primaryColor),),
+            child: Text(
+              "INFORMAÇÕES PESSOAIS",
+              style: TextStyle(color: primaryColor),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -145,7 +149,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           Padding(
             padding:
                 EdgeInsets.fromLTRB(20, 30, 0, Dp2Pixel(32, devicePixelRatio)),
-            child: Text("INFORMAÇÕES DE PERFIL", style: TextStyle(color: primaryColor),),
+            child: Text(
+              "INFORMAÇÕES DE PERFIL",
+              style: TextStyle(color: primaryColor),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -183,7 +190,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           Padding(
             padding:
                 EdgeInsets.fromLTRB(20, 30, 0, Dp2Pixel(32, devicePixelRatio)),
-            child: Text("FOTO DE PERFIL", style: TextStyle(color: primaryColor),),
+            child: Text(
+              "FOTO DE PERFIL",
+              style: TextStyle(color: primaryColor),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
