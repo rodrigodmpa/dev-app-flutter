@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
+import '../model/Animal.dart';
+import '../view/AnimalScreen.dart';
 
 class AnimalCard extends StatefulWidget {
+
   AnimalCard(
-      {Key key,
-      this.name = "troll",
-      this.pictureRoute = "asset/dog1.jpeg",
-      this.sex = "troll",
-      this.age = "troll",
-      this.size = "troll",
-      this.address = "troll"})
+      {Key key, this.animal})
       : super(key: key);
 
-  final String name, pictureRoute, sex, age, size, address;
+  final Animal animal;
 
   @override
   _AnimalCardState createState() => _AnimalCardState();
@@ -30,18 +27,10 @@ class _AnimalCardState extends State<AnimalCard> {
     double sizeOfHeightScreen = queryData.size.height;
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => AnimalCard(
-                  name: widget.name,
-                  sex: widget.sex,
-                  age: widget.age,
-                  size: widget.size,
-                  address: widget.address,
-                  pictureRoute: widget.pictureRoute,
-                ),
-          ),
+          '/animal',
+          arguments: widget.animal,
         );
       },
       child: Card(
@@ -58,7 +47,7 @@ class _AnimalCardState extends State<AnimalCard> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(left: 8),
-                    child: Text(widget.name),
+                    child: Text(widget.animal.name),
                   ),
                   IconButton(
                     icon: Icon(Icons.favorite),
@@ -71,7 +60,7 @@ class _AnimalCardState extends State<AnimalCard> {
               height: sizeOfHeightScreen / 3.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(widget.pictureRoute),
+                  image: AssetImage(widget.animal.pictureRoute),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -83,7 +72,7 @@ class _AnimalCardState extends State<AnimalCard> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Center(child: Text(widget.sex)),
+                      Center(child: Text(widget.animal.sex)),
                     ],
                   ),
                 ),
@@ -91,7 +80,7 @@ class _AnimalCardState extends State<AnimalCard> {
                   width: sizeOfWidthScreen / 3,
                   child: Column(
                     children: <Widget>[
-                      Center(child: Text(widget.age)),
+                      Center(child: Text(widget.animal.idade.toString())),
                     ],
                   ),
                 ),
@@ -99,7 +88,7 @@ class _AnimalCardState extends State<AnimalCard> {
                   width: sizeOfWidthScreen / 3,
                   child: Column(
                     children: <Widget>[
-                      Center(child: Text(widget.size)),
+                      Center(child: Text(widget.animal.size)),
                     ],
                   ),
                 ),
@@ -108,7 +97,7 @@ class _AnimalCardState extends State<AnimalCard> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: Text(widget.address),
+                child: Text(widget.animal.address),
               ),
             ),
           ],

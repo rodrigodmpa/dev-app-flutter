@@ -1,25 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/model/Animal.dart';
 
-class AnimalScreen extends StatelessWidget {
-  final String name;
-  final String age;
-  final String sex;
-  final String address;
-  final String pictureRoute;
-  final String size;
+class AnimalScreen extends StatefulWidget {
+  
 
-  const AnimalScreen({Key key, @required this.name, this.age, this.sex, this.address, this.pictureRoute, this.size}) : super(key: key);
+  const AnimalScreen({Key key, Animal animal}) : super(key: key);
+
+  @override
+  _AnimalScreenState createState() => _AnimalScreenState();
+}
+
+class _AnimalScreenState extends State<AnimalScreen> {
+  MediaQueryData queryData;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-        ),
-        drawer: Drawer(),
-        body: Center(
+    final Animal animal = new Animal();
+    queryData = MediaQuery.of(context);
+    double devicePixelRatio = queryData.devicePixelRatio;
+    double sizeOfWidthScreen = queryData.size.width - 8;
+    double sizeOfHeightScreen = queryData.size.height;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+      drawer: Drawer(),
+      body: Center(
+        child: Container(
+          height: sizeOfHeightScreen / 3.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(animal.pictureRoute),
+                  fit: BoxFit.fill,
+                ),
+              ),
         ),
       ),
     );

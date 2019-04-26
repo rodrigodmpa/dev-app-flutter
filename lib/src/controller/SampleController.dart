@@ -1,13 +1,13 @@
-import '../model/SampleModel.dart';
+// import '../model/SampleModel.dart';
 
-class SampleController {
-  SampleController();
+// class SampleController {
+//   SampleController();
 
-  void function() {
-    SampleModel sampleModel = SampleModel(
-      id: 0,
-      name: 'teste',
-    );
-    print(sampleModel);
-  }
-}
+//   void function() {
+//     SampleModel sampleModel = SampleModel(
+//       id: 0,
+//       name: 'teste',
+//     );
+//     print(sampleModel);
+//   }
+// }

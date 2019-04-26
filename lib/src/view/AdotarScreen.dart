@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'AnimalCard.dart';
+import '../model/Animal.dart';
 
 class AdotarScreen extends StatelessWidget {
   @override
@@ -14,13 +15,15 @@ class AdotarScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            AnimalCard(address: "SQN 404", age: "18", name: "Pequi", pictureRoute: "asset/dog4.jpeg", sex: "Male", size: "Medium",),
-            AnimalCard(pictureRoute: "asset/dog2.jpeg"),
-            AnimalCard(pictureRoute: "asset/dog1.jpeg"),
-            AnimalCard(pictureRoute: "asset/dog3.jpeg"),
-            AnimalCard(),
-            AnimalCard(),
-            AnimalCard(),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            AnimalCard(animal : Animal(id: 0,idade: 10,name: "Rodrigo",sex: "M",sobre: "Este animal é bonito",userId: 0,health: "Vacinado",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1")),
+            
           ],
         ),
       ),
