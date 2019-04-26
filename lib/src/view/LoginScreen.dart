@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
+import '../view/Widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -38,6 +39,7 @@ class MyCustomForm extends StatefulWidget {
 // Create a corresponding State class. This class will hold the data related to
 // the form.
 class MyCustomFormState extends State<MyCustomForm> {
+  MediaQueryData queryData;
   // Create a global key that will uniquely identify the Form widget and allow
   // us to validate the form
   //
@@ -46,27 +48,61 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   @override
   Widget build(BuildContext context) {
+    queryData = MediaQuery.of(context);
+    double devicePixelRatio = queryData.devicePixelRatio;
     // Build a Form widget using the _formKey we created above
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new MyTextField(hint: "Teste",),
-          MyTextField(),
+          new MyTextField(
+            hint: "Email",
+          ),
+          MyTextField(
+            hint: "Senha",
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(52, devicePixelRatio), 0,
+                Dp2Pixel(72, devicePixelRatio)),
+            child: Center(child: ButtonWidget(text: "ENTRAR", rota: '/')),
+          ),
+          Center(
             child: RaisedButton(
-              onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
-                if (_formKey.currentState.validate()) {
-                  // If the form is valid, we want to show a Snackbar
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
-                }
-              },
-              child: Text('Submit'),
+              onPressed: () {},
+              color: Color(0xff194f7c),
+              child: Container(
+                width: 232,
+                height: 40,
+                child: Center(
+                  child: Text(
+                    "Entrar com Facebook",
+                    style: TextStyle(
+                        color: Color(0xfff7f7f7),
+                        fontSize: 12,
+                        fontFamily: "Roboto"),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: RaisedButton(
+              onPressed: () {},
+              color: Color(0xfff15f5c),
+              child: Container(
+                width: 232,
+                height: 40,
+                child: Center(
+                  child: Text(
+                    "Entrar com Google",
+                    style: TextStyle(
+                        color: Color(0xfff7f7f7),
+                        fontSize: 12,
+                        fontFamily: "Roboto"),
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -77,7 +113,8 @@ class MyCustomFormState extends State<MyCustomForm> {
 
 class MyTextField extends StatelessWidget {
   const MyTextField({
-    Key key, this.hint,
+    Key key,
+    this.hint,
   }) : super(key: key);
 
   final String hint;
@@ -87,10 +124,8 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
-        decoration: InputDecoration(
-          hintText: hint,
-          border: UnderlineInputBorder()
-        ),
+        decoration:
+            InputDecoration(hintText: hint, border: UnderlineInputBorder()),
         validator: (value) {
           if (value.isEmpty) {
             return 'Please enter some text';

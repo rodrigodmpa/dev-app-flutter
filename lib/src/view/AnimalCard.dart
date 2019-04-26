@@ -31,17 +31,18 @@ class _AnimalCardState extends State<AnimalCard> {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AnimalCard(
-                    name: widget.name,
-                    sex: widget.sex,
-                    age: widget.age,
-                    size: widget.size,
-                    address: widget.address,
-                    pictureRoute: widget.pictureRoute,
-                  ),
-            ));
+          context,
+          MaterialPageRoute(
+            builder: (context) => AnimalCard(
+                  name: widget.name,
+                  sex: widget.sex,
+                  age: widget.age,
+                  size: widget.size,
+                  address: widget.address,
+                  pictureRoute: widget.pictureRoute,
+                ),
+          ),
+        );
       },
       child: Card(
         child: Column(

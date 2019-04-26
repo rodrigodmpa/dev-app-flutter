@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
 import 'Widgets.dart';
+import '../util/colors.dart';
 
 class CadAnimalScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -21,7 +22,7 @@ class CadAnimalScreen extends StatelessWidget {
             child: Center(
                 child: Text(
               "Ops",
-              style: TextStyle(fontSize: 72),
+              style: TextStyle(fontSize: 72, color: primaryLightColor),
             )),
           ),
           Center(
@@ -41,7 +42,7 @@ class CadAnimalScreen extends StatelessWidget {
           Padding(
             padding:
                 EdgeInsets.fromLTRB(0, Dp2Pixel(16, devicePixelRatio), 0, 0),
-            child: ButtonWidget(text: "Fazer login", rota: ''),
+            child: ButtonWidget(text: "Fazer login", rota: '/main'),
           ),
         ],
       ),

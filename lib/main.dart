@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => MyHomePage(),
         '/main': (context) => LoginScreen(),
         '/adotar': (context)=> AdotarScreen(),
-        '/ajudar': (context) => AjudarScreen(),
+        '/ajudar': (context) => AdotarScreen(),
         '/cad_animal': (context) => CadAnimalScreen(),
         '/cad_pessoa': (context) => CadPessoaScreen(),
         '/animal': (context) => AnimalScreen()
