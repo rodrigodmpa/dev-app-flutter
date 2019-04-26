@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../view/Widgets.dart';
+import '../model/User.dart';
 
 class LoginScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -35,7 +36,7 @@ class MyCustomForm extends StatefulWidget {
     return MyCustomFormState();
   }
 }
-
+User user;
 // Create a corresponding State class. This class will hold the data related to
 // the form.
 class MyCustomFormState extends State<MyCustomForm> {
@@ -129,6 +130,8 @@ class MyTextField extends StatelessWidget {
         validator: (value) {
           if (value.isEmpty) {
             return 'Please enter some text';
+          } else {
+            hint == "email" ? user.email = value : user.password = value;
           }
         },
       ),

@@ -14,7 +14,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
   MediaQueryData queryData;
   @override
   Widget build(BuildContext context) {
-    final Animal animal = new Animal();
+    final Animal animal = ModalRoute.of(context).settings.arguments;
     queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;
     double sizeOfWidthScreen = queryData.size.width - 8;
