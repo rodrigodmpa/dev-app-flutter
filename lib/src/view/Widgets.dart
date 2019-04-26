@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../util/colors.dart';
+
 class TextWidget extends StatelessWidget {
   const TextWidget({
     Key key,
@@ -26,7 +27,8 @@ class TextWidget extends StatelessWidget {
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
     Key key,
-    this.text, this.rota,
+    this.text,
+    this.rota,
   }) : super(key: key);
 
   final String text;
@@ -37,9 +39,10 @@ class ButtonWidget extends StatelessWidget {
     return RaisedButton(
       onPressed: () {
         Navigator.pushNamed(
-        context,
-        rota,
-      );},
+          context,
+          rota,
+        );
+      },
       color: primaryLightColor,
       child: Container(
         width: 232,
@@ -58,7 +61,8 @@ class ButtonWidget extends StatelessWidget {
 
 class MyTextField extends StatelessWidget {
   const MyTextField({
-    Key key, this.hint,
+    Key key,
+    this.hint,
   }) : super(key: key);
 
   final String hint;
@@ -68,15 +72,38 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
-        decoration: InputDecoration(
-          hintText: hint,
-          border: UnderlineInputBorder()
-        ),
+        decoration:
+            InputDecoration(hintText: hint, border: UnderlineInputBorder()),
         validator: (value) {
           if (value.isEmpty) {
             return 'Please enter some text';
           }
         },
+      ),
+    );
+  }
+}
+
+class MyText extends StatelessWidget {
+  
+   MyText({
+    Key key,
+    this.textColor,
+    this.text,
+    this.tamanho,
+  }) : super(key: key);
+
+  final String  text;
+  final Color textColor;
+  double tamanho;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: TextStyle(color: textColor,fontSize: tamanho,),
       ),
     );
   }
