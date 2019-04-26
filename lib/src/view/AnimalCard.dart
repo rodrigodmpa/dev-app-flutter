@@ -30,10 +30,18 @@ class _AnimalCardState extends State<AnimalCard> {
     double sizeOfHeightScreen = queryData.size.height;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/animal',
-        );
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AnimalCard(
+                    name: widget.name,
+                    sex: widget.sex,
+                    age: widget.age,
+                    size: widget.size,
+                    address: widget.address,
+                    pictureRoute: widget.pictureRoute,
+                  ),
+            ));
       },
       child: Card(
         child: Column(

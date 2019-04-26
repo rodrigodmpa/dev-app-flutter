@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
 class AnimalScreen extends StatelessWidget {
+  final String name;
+  final String age;
+  final String sex;
+  final String address;
+  final String pictureRoute;
+  final String size;
+
+  const AnimalScreen({Key key, @required this.name, this.age, this.sex, this.address, this.pictureRoute, this.size}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      drawer: Drawer(),
-      body: Center(
-        child: Text(
-          "Animal",
-          style: TextStyle(
-            fontSize: 72,
-            color: Color(0xFFABCDFA),
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        drawer: Drawer(),
+        body: Center(
         ),
       ),
     );
