@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
 import 'Widgets.dart';
 import '../util/colors.dart';
+import '../model/User.dart';
 
 class CadPessoaScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -62,6 +63,8 @@ class MyCustomFormState extends State<MyCustomForm> {
   // Note: This is a GlobalKey<FormState>, not a GlobalKey<MyCustomFormState>!
   final _formKey = GlobalKey<FormState>();
 
+  User _user = User();
+
   @override
   Widget build(BuildContext context) {
     queryData = MediaQuery.of(context);
@@ -89,6 +92,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   return 'Please enter some text';
                 }
               },
+              onSaved: (String value) {
+                this._user.name = value;
+              },
             ),
           ),
           Padding(
@@ -99,6 +105,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
+              },
+              onSaved: (String value) {
+                this._user.idade = value;
               },
             ),
           ),
@@ -111,6 +120,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   return 'Please enter some text';
                 }
               },
+              onSaved: (String value) {
+                this._user.email = value;
+              },
             ),
           ),
           Padding(
@@ -121,6 +133,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
+              },
+              onSaved: (String value) {
+                this._user.state = value;
               },
             ),
           ),
@@ -133,6 +148,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   return 'Please enter some text';
                 }
               },
+              onSaved: (String value) {
+                this._user.address = value;
+              },
             ),
           ),
           Padding(
@@ -143,6 +161,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
+              },
+              onSaved: (String value) {
+                this._user.phone = value;
               },
             ),
           ),
@@ -163,6 +184,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   return 'Please enter some text';
                 }
               },
+              onSaved: (String value) {
+                this._user.userName = value;
+              },
             ),
           ),
           Padding(
@@ -173,6 +197,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                 if (value.isEmpty) {
                   return 'Please enter some text';
                 }
+              },
+              onSaved: (String value) {
+                this._user.password = value;
               },
             ),
           ),
@@ -206,9 +233,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                     // Validate will return true if the form is valid, or false if
                     // the form is invalid.
                     if (_formKey.currentState.validate()) {
+                      _formKey.currentState.save();
                       // If the form is valid, we want to show a Snackbar
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
+
+                      print('Printing the login data.');
+                      print('User: ${_user.address.toString()}');
                     }
                   },
                   child: Text('Fazer Cadastro'),
@@ -219,5 +250,15 @@ class MyCustomFormState extends State<MyCustomForm> {
         ],
       ),
     );
+  }
+
+    void submit() {
+    // First validate form.
+    if (this._formKey.currentState.validate()) {
+      _formKey.currentState.save(); // Save our form now.
+
+      print('Printing the login data.');
+      print('User: ${_user.toString()}');
+    }
   }
 }

@@ -13,7 +13,7 @@ class Animal {
   String sobre;
 
 
-  Animal({this.id, this.userId, this.name,this.demands,this.size,this.health,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament});
+  Animal({this.id, this.userId, this.name, this.demands, this.size, this.health, this.idade, this.interest, this.sex, this.sobre, this.species, this.temperament});
 
   Animal.noId({this.userId ,this.name,this.demands,this.size,this.health,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament});
 
