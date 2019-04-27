@@ -5,6 +5,7 @@ import '../util/MyFunctions.dart';
 import 'Widgets.dart';
 import '../util/colors.dart';
 import '../model/User.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CadPessoaScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -57,6 +58,8 @@ class MyCustomForm extends StatefulWidget {
 // the form.
 class MyCustomFormState extends State<MyCustomForm> {
   MediaQueryData queryData;
+  File _image;
+
   // Create a global key that will uniquely identify the Form widget and allow
   // us to validate the form
   //
@@ -64,6 +67,14 @@ class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
 
   User _user = User();
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,6 +232,21 @@ class MyCustomFormState extends State<MyCustomForm> {
               "FOTO DE PERFIL",
               style: TextStyle(color: primaryColor),
             ),
+          ),
+          Center(
+            child: _image == null
+                ? Text('Nenhuma imagem selecionada.')
+                : Image.file(_image, width: 200, height: 150,),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Center(
+              child: FloatingActionButton(
+                onPressed: getImage,
+                tooltip: 'Pick Image',
+                child: Icon(Icons.add_a_photo),
+              )
+            )
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),

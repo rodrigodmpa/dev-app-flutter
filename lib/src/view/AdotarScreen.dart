@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'AnimalCard.dart';
 import '../model/Animal.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AdotarScreen extends StatelessWidget {
   @override
