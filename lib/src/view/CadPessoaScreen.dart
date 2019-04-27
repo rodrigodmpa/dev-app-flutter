@@ -59,7 +59,6 @@ class MyCustomForm extends StatefulWidget {
 class MyCustomFormState extends State<MyCustomForm> {
   MediaQueryData queryData;
   File _image;
-
   // Create a global key that will uniquely identify the Form widget and allow
   // us to validate the form
   //
@@ -67,6 +66,13 @@ class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
 
   User _user = User();
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
