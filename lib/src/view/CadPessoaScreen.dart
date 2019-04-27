@@ -74,14 +74,6 @@ class MyCustomFormState extends State<MyCustomForm> {
     });
   }
 
-  Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      _image = image;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     queryData = MediaQuery.of(context);
