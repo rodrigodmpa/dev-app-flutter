@@ -22,7 +22,8 @@ class _AnimalScreenState extends State<AnimalScreen> {
     double sizeOfHeightScreen = queryData.size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: primaryLightColor,
+        title: new Text(animal.name),
         elevation: 0,
       ),
       drawer: Drawer(),
@@ -139,9 +140,6 @@ class _AnimalScreenState extends State<AnimalScreen> {
                 ),
               ],
             ),
-            new Divider(
-              color: Colors.grey,
-            ),
             Row(
               children: <Widget>[
                 Container(
@@ -180,6 +178,127 @@ class _AnimalScreenState extends State<AnimalScreen> {
             Row(
               children: <Widget>[
                 Container(
+                  width: sizeOfWidthScreen/2,
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'CASTRADO',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          simOuNao(animal.health[0]),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: sizeOfWidthScreen/2,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'VERMIFUGADO',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          simOuNao(animal.health[1]),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: sizeOfWidthScreen/2,
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'VACINADO',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          simOuNao(animal.health[2]),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: sizeOfWidthScreen/2,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'DOENTE',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          simOuNao(animal.health[3]),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            new Divider(
+              color: Colors.grey,
+            ),
+            Row(
+              children: <Widget>[
+                Container(
                   width: sizeOfWidthScreen,
                   alignment: Alignment.bottomLeft,
                   child: Column(
@@ -197,7 +316,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.demands,
+                          animal.temperament,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -267,7 +386,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.demands,
+                          animal.sobre,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -287,5 +406,13 @@ class _AnimalScreenState extends State<AnimalScreen> {
         ),
       ),
     );
+  }
+}
+
+String simOuNao(int flag) {
+ if (flag == 1) {
+    return 'Sim';
+ } else{
+   return 'Nao';
   }
 }

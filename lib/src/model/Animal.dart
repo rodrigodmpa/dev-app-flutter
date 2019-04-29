@@ -15,8 +15,8 @@ class Animal {
   String address;
 
 
-  Animal({this.id, this.userId, this.name,this.health = const [1,2,3,4],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address});
+  Animal({this.id, this.userId, this.name,this.health = const [1,1,0,1],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address});
 
-  Animal.noId({this.userId ,this.name,this.health= const [1,2,3,4],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address});
+  Animal.noId({this.userId ,this.name,this.health= const [1,1,0,1],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address});
 
 }
