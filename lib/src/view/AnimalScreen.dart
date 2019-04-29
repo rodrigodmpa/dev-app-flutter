@@ -39,18 +39,47 @@ class _AnimalScreenState extends State<AnimalScreen> {
                 ),
               ),
             ),
-            Align(
-              alignment: FractionalOffset.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Container(
-                  child: MyText(
-                    tamanho: 25,
-                    text: animal.name,
-                    textColor: Colors.black,
+            Row(
+              children: <Widget>[
+                Container(
+                  width: sizeOfWidthScreen / 2,
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          animal.name,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
+                Container(
+                  width: sizeOfWidthScreen / 2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FloatingActionButton(
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.favorite_border,
+                          ),
+                          backgroundColor: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
             Row(
               children: <Widget>[
@@ -178,7 +207,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
             Row(
               children: <Widget>[
                 Container(
-                  width: sizeOfWidthScreen/2,
+                  width: sizeOfWidthScreen / 2,
                   alignment: Alignment.bottomLeft,
                   child: Column(
                     children: <Widget>[
@@ -206,7 +235,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                   ),
                 ),
                 Container(
-                  width: sizeOfWidthScreen/2,
+                  width: sizeOfWidthScreen / 2,
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -237,7 +266,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
             Row(
               children: <Widget>[
                 Container(
-                  width: sizeOfWidthScreen/2,
+                  width: sizeOfWidthScreen / 2,
                   alignment: Alignment.bottomLeft,
                   child: Column(
                     children: <Widget>[
@@ -265,7 +294,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                   ),
                 ),
                 Container(
-                  width: sizeOfWidthScreen/2,
+                  width: sizeOfWidthScreen / 2,
                   child: Column(
                     children: <Widget>[
                       Padding(
@@ -376,7 +405,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          'MAIS SOBRE '+animal.name.toUpperCase(),
+                          'MAIS SOBRE ' + animal.name.toUpperCase(),
                           style: TextStyle(
                             color: primaryColor,
                             fontSize: 20,
@@ -399,9 +428,10 @@ class _AnimalScreenState extends State<AnimalScreen> {
               ],
             ),
             Padding(
-            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48,devicePixelRatio), 0, Dp2Pixel(12, devicePixelRatio)),
-            child: new ButtonWidget(text: "PRETENDO ADOTAR",rota: ''),
-          ),
+              padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48, devicePixelRatio), 0,
+                  Dp2Pixel(12, devicePixelRatio)),
+              child: new ButtonWidget(text: "PRETENDO ADOTAR", rota: ''),
+            ),
           ],
         ),
       ),
@@ -410,9 +440,9 @@ class _AnimalScreenState extends State<AnimalScreen> {
 }
 
 String simOuNao(int flag) {
- if (flag == 1) {
+  if (flag == 1) {
     return 'Sim';
- } else{
-   return 'Nao';
+  } else {
+    return 'Nao';
   }
 }
