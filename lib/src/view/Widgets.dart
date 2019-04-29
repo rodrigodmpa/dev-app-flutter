@@ -85,15 +85,14 @@ class MyTextField extends StatelessWidget {
 }
 
 class MyText extends StatelessWidget {
-  
-   MyText({
+  MyText({
     Key key,
     this.textColor,
     this.text,
     this.tamanho,
   }) : super(key: key);
 
-  final String  text;
+  final String text;
   final Color textColor;
   double tamanho;
 
@@ -103,7 +102,10 @@ class MyText extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         text,
-        style: TextStyle(color: textColor,fontSize: tamanho,),
+        style: TextStyle(
+          color: textColor,
+          fontSize: tamanho,
+        ),
       ),
     );
   }

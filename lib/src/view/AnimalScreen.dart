@@ -58,33 +58,25 @@ class _AnimalScreenState extends State<AnimalScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      MyText(
-                        tamanho: 20,
-                        text: "Sexo",
-                        textColor: primaryColor,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'SEXO',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
-                      MyText(
-                        tamanho: 20,
-                        text: animal.sex,
-                        textColor: Colors.black,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: sizeOfWidthScreen / 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      MyText(
-                        tamanho: 20,
-                        text: "Porte",
-                        textColor: primaryColor,
-                      ),
-                      MyText(
-                        tamanho: 20,
-                        text: animal.size,
-                        textColor: Colors.black,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          animal.sex,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -94,15 +86,53 @@ class _AnimalScreenState extends State<AnimalScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      MyText(
-                        tamanho: 20,
-                        text: "Idade",
-                        textColor: primaryColor,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'PORTE',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
-                      MyText(
-                        tamanho: 20,
-                        text: animal.idade.toString()+" anos",
-                        textColor: Colors.black,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          animal.size,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: sizeOfWidthScreen / 3,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'IDADE',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          animal.idade.toString() + ' anos',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -110,91 +140,69 @@ class _AnimalScreenState extends State<AnimalScreen> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: sizeOfWidthScreen/2,
-                  alignment: Alignment.bottomLeft,
-                  child: Column(
-                    children: <Widget>[
-                      MyText(
-                        tamanho: 20,
-                        text: "Endereço",
-                        textColor: primaryColor,
+          Row(
+            children: <Widget>[
+              Container(
+                width: sizeOfWidthScreen,
+                alignment: Alignment.bottomLeft,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                      child: Text(
+                        'ENDEREÇO',
+                        style: TextStyle(
+                          color: primaryColor,
+                          fontSize: 20,
+                        ),
                       ),
-                      MyText(
-                        tamanho: 20,
-                        text: animal.address,
-                        textColor: Colors.black,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                      child: Text(
+                        animal.address,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: sizeOfWidthScreen / 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      MyText(
-                        tamanho: 20,
-                        text: "Saúde",
-                        textColor: primaryColor,
+          Row(
+            children: <Widget>[
+              Container(
+                width: sizeOfWidthScreen,
+                alignment: Alignment.bottomLeft,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                      child: Text(
+                        'EXIGÊNCIAS',
+                        style: TextStyle(
+                          color: primaryColor,
+                          fontSize: 20,
+                        ),
                       ),
-                      MyText(
-                        tamanho: 20,
-                        text: animal.health,
-                        textColor: Colors.black,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                      child: Text(
+                        animal.demands,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Container(
-                  width: sizeOfWidthScreen / 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      MyText(
-                        tamanho: 20,
-                        text: "Interesse",
-                        textColor: primaryColor,
-                      ),
-                      MyText(
-                        tamanho: 20,
-                        text: animal.interest.toString(),
-                        textColor: Colors.black,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: sizeOfWidthScreen / 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      MyText(
-                        tamanho: 20,
-                        text: "Sexo",
-                        textColor: primaryColor,
-                      ),
-                      MyText(
-                        tamanho: 20,
-                        text: animal.sex,
-                        textColor: Colors.black,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
