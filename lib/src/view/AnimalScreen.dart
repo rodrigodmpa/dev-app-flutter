@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/src/model/Animal.dart';
 import '../util/colors.dart';
 import '../view/Widgets.dart';
+import '../util/MyFunctions.dart';
 
 class AnimalScreen extends StatefulWidget {
   const AnimalScreen({Key key, Animal animal}) : super(key: key);
@@ -25,33 +26,32 @@ class _AnimalScreenState extends State<AnimalScreen> {
         elevation: 0,
       ),
       drawer: Drawer(),
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: sizeOfHeightScreen / 3.5,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(animal.pictureRoute),
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          Align(
-            alignment: FractionalOffset.bottomLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Container(
-                child: MyText(
-                  tamanho: 25,
-                  text: animal.name,
-                  textColor: Colors.black,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: sizeOfHeightScreen / 3.5,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(animal.pictureRoute),
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child: Row(
+            Align(
+              alignment: FractionalOffset.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Container(
+                  child: MyText(
+                    tamanho: 25,
+                    text: animal.name,
+                    textColor: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            Row(
               children: <Widget>[
                 Container(
                   width: sizeOfWidthScreen / 3,
@@ -139,72 +139,152 @@ class _AnimalScreenState extends State<AnimalScreen> {
                 ),
               ],
             ),
-          ),
-          Row(
-            children: <Widget>[
-              Container(
-                width: sizeOfWidthScreen,
-                alignment: Alignment.bottomLeft,
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                      child: Text(
-                        'ENDEREÇO',
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontSize: 20,
+            new Divider(
+              color: Colors.grey,
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: sizeOfWidthScreen,
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'ENDEREÇO',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                      child: Text(
-                        animal.address,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          animal.address,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Container(
-                width: sizeOfWidthScreen,
-                alignment: Alignment.bottomLeft,
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                      child: Text(
-                        'EXIGÊNCIAS',
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontSize: 20,
+              ],
+            ),
+            new Divider(
+              color: Colors.grey,
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: sizeOfWidthScreen,
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'TEMPERAMENTO',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                      child: Text(
-                        animal.demands,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          animal.demands,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
+            new Divider(
+              color: Colors.grey,
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: sizeOfWidthScreen,
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'EXIGÊNCIAS DO DOADOR',
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          animal.demands,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            new Divider(
+              color: Colors.grey,
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: sizeOfWidthScreen,
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          'MAIS SOBRE '+animal.name.toUpperCase(),
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                        child: Text(
+                          animal.demands,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48,devicePixelRatio), 0, Dp2Pixel(12, devicePixelRatio)),
+            child: new ButtonWidget(text: "PRETENDO ADOTAR",rota: ''),
           ),
-        ],
+          ],
+        ),
       ),
     );
   }
