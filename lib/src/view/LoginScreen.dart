@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../view/Widgets.dart';
 import '../model/User.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class LoginScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -36,7 +39,9 @@ class MyCustomForm extends StatefulWidget {
     return MyCustomFormState();
   }
 }
+
 User user;
+
 // Create a corresponding State class. This class will hold the data related to
 // the form.
 class MyCustomFormState extends State<MyCustomForm> {
@@ -46,6 +51,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   //
   // Note: This is a GlobalKey<FormState>, not a GlobalKey<MyCustomFormState>!
   final _formKey = GlobalKey<FormState>();
+  bool _success = false;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +72,7 @@ class MyCustomFormState extends State<MyCustomForm> {
           Padding(
             padding: EdgeInsets.fromLTRB(0, Dp2Pixel(52, devicePixelRatio), 0,
                 Dp2Pixel(72, devicePixelRatio)),
-            child: Center(child: ButtonWidget(text: "ENTRAR", rota: '/')),
+            child: Center(child: ButtonWidget(text: "ENTRAR", rota: '')),
           ),
           Center(
             child: RaisedButton(
@@ -89,7 +95,9 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           Center(
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                _signInWithEmailAndPassword();
+              },
               color: Color(0xfff15f5c),
               child: Container(
                 width: 232,
@@ -109,6 +117,18 @@ class MyCustomFormState extends State<MyCustomForm> {
         ],
       ),
     );
+  }
+
+  void _signInWithEmailAndPassword() async {
+    final FirebaseUser userFirebase = await _auth.signInWithEmailAndPassword(
+      email: "teste@teste.com",
+      password: "130697",
+    );
+    if (userFirebase != null) {
+      Navigator.pushNamed(context, '/');
+    } else {
+      _success = false;
+    }
   }
 }
 
