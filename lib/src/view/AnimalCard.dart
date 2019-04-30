@@ -51,7 +51,7 @@ class _AnimalCardState extends State<AnimalCard> {
                     child: Text(widget.animal.name),
                   ),
                   IconButton(
-                    icon: Icon(Icons.favorite),
+                    icon: Icon(Icons.favorite_border),
                     onPressed: () => {},
                   ),
                 ],
@@ -66,39 +66,42 @@ class _AnimalCardState extends State<AnimalCard> {
                 ),
               ),
             ),
-            Row(
-              children: <Widget>[
-                Container(
-                  width: sizeOfWidthScreen / 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Center(child: Text(widget.animal.sex)),
-                    ],
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: sizeOfWidthScreen / 3,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Center(child: Text(widget.animal.sex.toUpperCase())),
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  width: sizeOfWidthScreen / 3,
-                  child: Column(
-                    children: <Widget>[
-                      Center(child: Text(widget.animal.idade.toString())),
-                    ],
+                  Container(
+                    width: sizeOfWidthScreen / 3,
+                    child: Column(
+                      children: <Widget>[
+                        Center(child: Text(widget.animal.idade.toString()+' ANOS')),
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  width: sizeOfWidthScreen / 3,
-                  child: Column(
-                    children: <Widget>[
-                      Center(child: Text(widget.animal.size)),
-                    ],
+                  Container(
+                    width: sizeOfWidthScreen / 3,
+                    child: Column(
+                      children: <Widget>[
+                        Center(child: Text(widget.animal.size.toUpperCase())),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: Text(widget.animal.address),
+                child: Text(widget.animal.address.toUpperCase()),
               ),
             ),
           ],
