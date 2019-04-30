@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../model/Animal.dart';
-import '../view/AnimalScreen.dart';
+import '../view/AdotarAnimalScreen.dart';
 
 class AnimalCard extends StatefulWidget {
 
   AnimalCard(
-      {Key key, this.animal})
+      {Key key, this.animal, this.onTapPath})
       : super(key: key);
 
   final Animal animal;
+  final String onTapPath;
 
   @override
   _AnimalCardState createState() => _AnimalCardState();
@@ -29,7 +30,7 @@ class _AnimalCardState extends State<AnimalCard> {
       onTap: () {
         Navigator.pushNamed(
           context,
-          '/animal',
+          widget.onTapPath,
           arguments: widget.animal,
         );
       },

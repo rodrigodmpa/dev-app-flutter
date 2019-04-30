@@ -13,10 +13,11 @@ class Animal {
   String sobre;
   String pictureRoute;
   String address;
+  String needs;
 
 
-  Animal({this.id, this.userId, this.name,this.health = const [1,1,0,1],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address});
+  Animal({this.id, this.userId, this.name,this.health = const [1,1,0,1],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address, this.needs = 'Nada'});
 
-  Animal.noId({this.userId ,this.name,this.health= const [1,1,0,1],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address});
+  Animal.noId({this.userId ,this.name,this.health= const [1,1,0,1],this.size,this.demands,this.idade,this.interest,this.sex,this.sobre,this.species,this.temperament,this.pictureRoute,this.address, this.needs = 'Nada'});
 
 }

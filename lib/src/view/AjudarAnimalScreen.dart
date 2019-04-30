@@ -4,14 +4,14 @@ import '../util/colors.dart';
 import '../view/Widgets.dart';
 import '../util/MyFunctions.dart';
 
-class AnimalScreen extends StatefulWidget {
-  const AnimalScreen({Key key, Animal animal}) : super(key: key);
+class AjudarAnimalScreen extends StatefulWidget {
+  const AjudarAnimalScreen({Key key, Animal animal}) : super(key: key);
 
   @override
-  _AnimalScreenState createState() => _AnimalScreenState();
+  _AjudarAnimalScreenState createState() => _AjudarAnimalScreenState();
 }
 
-class _AnimalScreenState extends State<AnimalScreen> {
+class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
   MediaQueryData queryData;
   @override
   Widget build(BuildContext context) {
@@ -370,7 +370,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          'EXIGÊNCIAS DO DOADOR',
+                          animal.name.toUpperCase()+' PRECISA DE',
                           style: TextStyle(
                             color: primaryColor,
                             fontSize: 20,
@@ -380,7 +380,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.demands,
+                          animal.needs,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -430,7 +430,7 @@ class _AnimalScreenState extends State<AnimalScreen> {
             Padding(
               padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48, devicePixelRatio), 0,
                   Dp2Pixel(12, devicePixelRatio)),
-              child: new ButtonWidget(text: "PRETENDO ADOTAR", rota: ''),
+              child: new ButtonWidget(text: "PRETENDO APADRINHAR", rota: ''),
             ),
           ],
         ),
