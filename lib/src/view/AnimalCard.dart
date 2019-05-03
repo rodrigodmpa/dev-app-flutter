@@ -3,6 +3,7 @@ import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../model/Animal.dart';
 import '../view/AdotarAnimalScreen.dart';
+import '../view/Menu.dart';
 
 class AnimalCard extends StatefulWidget {
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'AnimalCard.dart';
 import '../model/Animal.dart';
 import 'package:image_picker/image_picker.dart';
+import '../view/Menu.dart';
 
 class AdotarScreen extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class AdotarScreen extends StatelessWidget {
         title: Text("Adotar"),
         elevation: 4,
       ),
-      drawer: Drawer(),
+      drawer: Menu(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

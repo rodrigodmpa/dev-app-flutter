@@ -4,6 +4,7 @@ import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../view/Widgets.dart';
 import '../model/User.dart';
+import '../view/Menu.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -19,6 +20,7 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         title: Text("Login"),
       ),
+      drawer: Menu(),
       body: Column(
         children: <Widget>[
           Padding(

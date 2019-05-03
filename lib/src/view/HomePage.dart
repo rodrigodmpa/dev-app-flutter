@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'Widgets.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
+import '../view/Menu.dart';
 
 class MyHomePage extends StatelessWidget {
 
@@ -19,7 +20,8 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      drawer: Drawer(),
+      drawer: Menu(
+      ),
       body: Column(
         children: <Widget>[
           Padding(

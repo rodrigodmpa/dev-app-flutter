@@ -3,6 +3,7 @@ import 'package:myapp/src/model/Animal.dart';
 import '../util/colors.dart';
 import '../view/Widgets.dart';
 import '../util/MyFunctions.dart';
+import '../view/Menu.dart';
 
 class AjudarAnimalScreen extends StatefulWidget {
   const AjudarAnimalScreen({Key key, Animal animal}) : super(key: key);
@@ -26,7 +27,9 @@ class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
         title: new Text(animal.name),
         elevation: 0,
       ),
-      drawer: Drawer(),
+      drawer: Menu(
+        
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

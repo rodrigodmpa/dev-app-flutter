@@ -5,6 +5,7 @@ import '../util/colors.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import '../model/Animal.dart';
+import '../view/Menu.dart';
 
 class CadAnimalScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -20,6 +21,7 @@ class CadAnimalScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("Cadastro Animal"),
         ),
+        drawer: Menu(),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[

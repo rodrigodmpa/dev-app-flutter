@@ -6,6 +6,7 @@ import 'Widgets.dart';
 import '../util/colors.dart';
 import '../model/User.dart';
 import 'package:image_picker/image_picker.dart';
+import '../view/Menu.dart';
 
 class CadPessoaScreen extends StatelessWidget {
   MediaQueryData queryData;
@@ -18,6 +19,7 @@ class CadPessoaScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Cadastro Pessoal"),
       ),
+      drawer: Menu(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
