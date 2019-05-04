@@ -8,6 +8,8 @@ import '../util/colors.dart';
 import '../view/Menu.dart';
 import 'package:firebase_database/firebase_database.dart';
 
+final databaseReference = FirebaseDatabase.instance.reference();
+
 class MyHomePage extends StatelessWidget {
 
   MediaQueryData queryData;
@@ -93,7 +95,6 @@ class MyHomePage extends StatelessWidget {
   }
 
   void createInitialAnimals(){
-    final databaseReference = FirebaseDatabase.instance.reference();
 
     List<Animal> animais = [
       Animal(id: 1,idade: 3,name: "Iron Man",sex: "Macho",sobre: "Este animal é Feio",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Médio",temperament: "Suave", interest: 2,pictureRoute: "asset/dog2.jpeg",address: "SQN 2"),
@@ -113,13 +114,13 @@ class MyHomePage extends StatelessWidget {
     }
 
     // Lê os registros do BD
-    databaseReference.once().then((DataSnapshot snapshot){
-      Map<dynamic, dynamic> values = snapshot.value;
-      values.forEach((key,values) {
-        print(key);
-        print(values);
-      });
-    });
+//    databaseReference.once().then((DataSnapshot snapshot){
+//      Map<dynamic, dynamic> values = snapshot.value;
+//      values.forEach((key,values) {
+//        print(key);
+//        print(values);
+//      });
+//    });
   }
 
 }

@@ -1,12 +1,53 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'AnimalCard.dart';
-import '../model/Animal.dart';
-import 'package:image_picker/image_picker.dart';
 import '../view/Menu.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'dart:convert';
+import 'package:myapp/src/model/Animal.dart';
 
-class AdotarScreen extends StatelessWidget {
+
+class AdotarScreen extends StatefulWidget{
+
   @override
-  Widget build(BuildContext context) {
+  _AdotarScreenState createState() => _AdotarScreenState();
+}
+
+final databaseReference = FirebaseDatabase.instance.reference();
+final animaisReference = FirebaseDatabase.instance.reference().child('animais');
+
+class _AdotarScreenState extends State<AdotarScreen> {
+  List<Animal> animais;
+
+//  _AdotarScreenState() {
+//    if(animais == null) {
+//      getAnimalsFromDatabase().then((val) {
+//        print("AQUI");
+//        print(val);
+//        setState(() {
+//          animais = val;
+//        });
+//      });
+//    }
+//  }
+
+  @override
+  Widget build(BuildContext context){
+
+    var futureBuilder = new FutureBuilder(
+      future: getAnimalsFromDatabase(),
+      builder: (BuildContext context, AsyncSnapshot<List<Animal>> snapshot) {
+        print("Future Builder");
+        print(snapshot.data);
+        return new SingleChildScrollView(
+          child: Column(
+            children: _createChildren(snapshot.data),
+          ),
+        );
+      }
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
@@ -14,21 +55,40 @@ class AdotarScreen extends StatelessWidget {
         elevation: 4,
       ),
       drawer: Menu(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            AnimalCard(animal : Animal(id: 0,idade: 2,name: "Thor",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog1.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(id: 1,idade: 3,name: "Iron Man",sex: "Macho",sobre: "Este animal é Feio",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Médio",temperament: "Suave", interest: 2,pictureRoute: "asset/dog2.jpeg",address: "SQN 2"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(id: 2,idade: 4,name: "Cp America",sex: "Fêmea",sobre: "Este animal é estranho",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Pequeno",temperament: "Tranqs", interest: 3,pictureRoute: "asset/dog3.jpeg",address: "SQN 3"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(id: 3,idade: 5,name: "Hulk",sex: "Macho",sobre: "Este animal é diferente",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 4,pictureRoute: "asset/dog4.jpeg",address: "SQN 4"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(id: 4,idade: 6,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(id: 5,idade: 7,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(id: 6,idade: 8,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(id: 7,idade: 9,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-
-          ],
-        ),
-      ),
+      body: futureBuilder,
+//      body: SingleChildScrollView(
+//        child: Column(
+//          children: _createChildren(animais),
+//        ),
+//      ),
     );
+  }
+
+  Future<List<Animal>> getAnimalsFromDatabase() async{
+    List<Animal> animais = new List<Animal>();
+
+    // Lê os registros do BD
+    databaseReference.once().then((DataSnapshot snapshot){
+      Map<dynamic, dynamic> values = snapshot.value;
+      values.forEach((key,values) {
+        if(key == "animais") {
+          for (var a in values) {
+            if (a != null) {
+              Map animalMap = jsonDecode(a);
+              Animal animal = Animal.fromJson(animalMap);
+              animais.add(animal);
+            }
+          }
+        }
+      });
+    });
+
+    return await animais;
+  }
+
+  List<Widget> _createChildren(animais) {
+    return new List<Widget>.generate(animais.length, (int index){
+      return AnimalCard(animal:animais[index], onTapPath:"/adotar_animal_screen",);
+    });
   }
 }
