@@ -105,9 +105,12 @@ class MyHomePage extends StatelessWidget {
       Animal(id: 7,idade: 9,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
     ];
 
-    // Cria um registro no BD com o primeiro animal
-    databaseReference.child("animais").set(jsonEncode(animais[0]));
-
+    // Cria registro no BD com os animais da lista
+    DatabaseReference animaisRef = databaseReference.child("animais");
+    for(int i=0; i<animais.length; i++) {
+      String idStr = animais[i].id.toString();
+      animaisRef.child(idStr).set(jsonEncode(animais[i]));
+    }
 
     // Lê os registros do BD
     databaseReference.once().then((DataSnapshot snapshot){
