@@ -1,10 +1,12 @@
 import 'dart:ui';
-
+import 'dart:convert';
+import 'package:myapp/src/model/Animal.dart';
 import 'package:flutter/material.dart';
 import 'Widgets.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../view/Menu.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class MyHomePage extends StatelessWidget {
 
@@ -14,6 +16,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;
+    createInitialAnimals();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -88,6 +91,34 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
+
+  void createInitialAnimals(){
+    final databaseReference = FirebaseDatabase.instance.reference();
+
+    List<Animal> animais = [
+      Animal(id: 1,idade: 3,name: "Iron Man",sex: "Macho",sobre: "Este animal é Feio",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Médio",temperament: "Suave", interest: 2,pictureRoute: "asset/dog2.jpeg",address: "SQN 2"),
+      Animal(id: 2,idade: 4,name: "Cp America",sex: "Fêmea",sobre: "Este animal é estranho",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Pequeno",temperament: "Tranqs", interest: 3,pictureRoute: "asset/dog3.jpeg",address: "SQN 3"),
+      Animal(id: 3,idade: 5,name: "Hulk",sex: "Macho",sobre: "Este animal é diferente",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 4,pictureRoute: "asset/dog4.jpeg",address: "SQN 4"),
+      Animal(id: 4,idade: 6,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+      Animal(id: 5,idade: 7,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+      Animal(id: 6,idade: 8,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+      Animal(id: 7,idade: 9,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+    ];
+
+    // Cria um registro no BD com o primeiro animal
+    databaseReference.child("animais").set(jsonEncode(animais[0]));
+
+
+    // Lê os registros do BD
+    databaseReference.once().then((DataSnapshot snapshot){
+      Map<dynamic, dynamic> values = snapshot.value;
+      values.forEach((key,values) {
+        print(key);
+        print(values);
+      });
+    });
+  }
+
 }
 
 // class MyHomePage extends StatefulWidget {
