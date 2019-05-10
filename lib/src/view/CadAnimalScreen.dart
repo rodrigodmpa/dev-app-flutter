@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/AnimalController.dart';
 import 'package:myapp/src/controller/auth/AuthController.dart';
 import '../util/MyFunctions.dart';
 import 'Widgets.dart';
@@ -674,9 +675,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                       // If the form is valid, we want to show a Snackbar
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
-
+                      AnimalController().registerAnimal(_animal);
                       print('Printing the login data.');
-                      print('Animal: ${_animal.address.toString()}');
+                      print('Animal: ${_animal.toString()}');
                     }
                   },
                   child: Text('Procurar padrinho'),
