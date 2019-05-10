@@ -190,7 +190,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   void login() async {
     try{
       await AuthController().signInWithEmailAndPassword(email, password);
-      Navigator.pushNamed(context, '/cad_animal');
+      Navigator.pushNamed(context, '/');
     } catch(e) {
       print(e);
     }

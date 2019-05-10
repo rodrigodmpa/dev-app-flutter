@@ -11,6 +11,7 @@ import '../view/Menu.dart';
 
 class CadAnimalScreen extends StatelessWidget {
   MediaQueryData queryData;
+  Animal animal;
 
   @override
   Widget build(BuildContext context) {
@@ -164,6 +165,11 @@ class MyCustomFormState extends State<MyCustomForm> {
   bool _value19 = false;
   bool _value20 = false;
 
+  int especie = 1;
+  int sexo = 1;
+  int porte = 1;
+  int idade = 1;
+
   void _value1Changed(bool value) => setState(() => _value1 = value);
   void _value2Changed(bool value) => setState(() => _value2 = value);
   void _value3Changed(bool value) => setState(() => _value3 = value);
@@ -276,8 +282,12 @@ class MyCustomFormState extends State<MyCustomForm> {
             children: <Widget>[
               new Radio(
                 value: 1,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: especie,
+                onChanged: (int value) {
+                  especie = 1;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Cachorro',
@@ -285,8 +295,12 @@ class MyCustomFormState extends State<MyCustomForm> {
               ),
               new Radio(
                 value: 0,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: especie,
+                onChanged: (int value) {
+                  especie = 0;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Gato',
@@ -316,8 +330,12 @@ class MyCustomFormState extends State<MyCustomForm> {
             children: <Widget>[
               new Radio(
                 value: 1,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: sexo,
+                onChanged: (int value) {
+                  sexo = 1;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Macho',
@@ -325,8 +343,12 @@ class MyCustomFormState extends State<MyCustomForm> {
               ),
               new Radio(
                 value: 0,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: sexo,
+                onChanged: (int value) {
+                  sexo = 0;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Fêmea',
@@ -356,8 +378,12 @@ class MyCustomFormState extends State<MyCustomForm> {
             children: <Widget>[
               new Radio(
                 value: 1,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: porte,
+                onChanged: (int value) {
+                  porte = 1;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Pequeno',
@@ -365,8 +391,12 @@ class MyCustomFormState extends State<MyCustomForm> {
               ),
               new Radio(
                 value: 0,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: porte,
+                onChanged: (int value) {
+                  porte = 0;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Médio',
@@ -375,9 +405,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                 ),
               ),
               new Radio(
-                value: 0,
-                groupValue: 1,
-                onChanged: (int value) {},
+                value: 2,
+                groupValue: porte,
+                onChanged: (int value) {
+                  porte = 2;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Grande',
@@ -407,8 +441,12 @@ class MyCustomFormState extends State<MyCustomForm> {
             children: <Widget>[
               new Radio(
                 value: 1,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: idade,
+                onChanged: (int value) {
+                  idade = 1;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Filhote',
@@ -416,8 +454,12 @@ class MyCustomFormState extends State<MyCustomForm> {
               ),
               new Radio(
                 value: 0,
-                groupValue: 1,
-                onChanged: (int value) {},
+                groupValue: idade,
+                onChanged: (int value) {
+                  idade = 0;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Adulto',
@@ -426,9 +468,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                 ),
               ),
               new Radio(
-                value: 0,
-                groupValue: 1,
-                onChanged: (int value) {},
+                value: 2,
+                groupValue: idade,
+                onChanged: (int value) {
+                  idade = 2;
+                  setState(() {
+                  });
+                },
               ),
               new Text(
                 'Idoso',
@@ -656,7 +702,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
               },
               onSaved: (String value) {
-                this._animal.needs = value;
+                this._animal.sobre = value;
               },
             ),
           ),
@@ -673,6 +719,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
                       // If the form is valid, we want to show a Snackbar
+                      this._animal.species = especie.toString();
+                      this._animal.sex = sexo.toString();
+                      this._animal.size = porte.toString();
+                      this._animal.idade = idade;
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
                       AnimalController().registerAnimal(_animal);
