@@ -169,7 +169,11 @@ class MyCustomFormState extends State<MyCustomForm> {
   int sexo = 1;
   int porte = 1;
   int idade = 1;
-  List<int> temperamento = new List(6);
+  List<int> temperamento = [0,0,0,0,0,0];
+  List<int> health = [0,0,0,0];
+  List<int> demands = [0,0,0];
+  List<int> needs = [0,0,0];
+  int objects = 1;
 
   void _value1Changed(bool value) => setState(() => _value1 = value);
   void _value2Changed(bool value) => setState(() => _value2 = value);
@@ -563,17 +567,33 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value7, onChanged: _value7Changed),
+              Checkbox(value: _value7, onChanged: (bool value) {
+                _value7 = value;
+                value ? health[0] = 1 : health[0] = 0;
+                setState(() {});
+              }),
               Text("Vacinado"),
-              Checkbox(value: _value8, onChanged: _value8Changed),
+              Checkbox(value: _value8, onChanged: (bool value) {
+                _value8 = value;
+                value ? health[1] = 1 : health[1] = 0;
+                setState(() {});
+              }),
               Text("Vermifugado"),
             ],
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value9, onChanged: _value9Changed),
+              Checkbox(value: _value9, onChanged: (bool value) {
+                _value9 = value;
+                value ? health[2] = 1 : health[2] = 0;
+                setState(() {});
+              }),
               Text("Castrado"),
-              Checkbox(value: _value10, onChanged: _value10Changed),
+              Checkbox(value: _value10, onChanged: (bool value) {
+                _value10 = value;
+                value ? health[3] = 1 : health[3] = 0;
+                setState(() {});
+              }),
               Text("Doente"),
             ],
           ),
@@ -581,11 +601,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(hintText: "Doenças do animal:"),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-              },
               onSaved: (String value) {
                 this._animal.disease = value;
               },
@@ -609,19 +624,31 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value11, onChanged: _value11Changed),
+              Checkbox(value: _value11, onChanged: (bool value) {
+                _value11 = value;
+                value ? demands[0] = 1 : demands[0] = 0;
+                setState(() {});
+              }),
               Text("Termo de Apadrinhamento")
             ],
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value12, onChanged: _value12Changed),
+              Checkbox(value: _value12, onChanged: (bool value) {
+                _value12 = value;
+                value ? demands[1] = 1 : demands[1] = 0;
+                setState(() {});
+              }),
               Text("Auxílio financieiro")
             ],
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value13, onChanged: _value13Changed),
+              Checkbox(value: _value13, onChanged: (bool value) {
+                _value13 = value;
+                value ? demands[2] = 1 : demands[2] = 0;
+                setState(() {});
+              }),
               Text("Visitas ao animal")
             ],
           ),
@@ -651,19 +678,31 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value14, onChanged: _value14Changed),
+              Checkbox(value: _value14, onChanged: (bool value) {
+                _value14 = value;
+                value ? needs[0] = 1 : needs[0] = 0;
+                setState(() {});
+              }),
               Text("Alimento")
             ],
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value15, onChanged: _value15Changed),
+              Checkbox(value: _value15, onChanged: (bool value) {
+                _value15 = value;
+                value ? needs[1] = 1 : needs[1] = 0;
+                setState(() {});
+              }),
               Text("Auxílio financieiro")
             ],
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value16, onChanged: _value16Changed),
+              Checkbox(value: _value16, onChanged: (bool value) {
+                _value16 = value;
+                value ? needs[2] = 1 : needs[2] = 0;
+                setState(() {});
+              }),
               Text("Medicamento")
             ],
           ),
@@ -671,11 +710,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(hintText: "Nome do medicamento"),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-              },
               onSaved: (String value) {
                 this._animal.medicationName = value;
               },
@@ -683,7 +717,11 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value17, onChanged: _value17Changed),
+              Checkbox(value: _value17, onChanged: (bool value) {
+                _value17 = value;
+                value ? objects = 1 : objects = 0;
+                setState(() {});
+              }),
               Text("Objetos")
             ],
           ),
@@ -691,11 +729,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(hintText: "Especifique os objetos"),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-              },
               onSaved: (String value) {
                 this._animal.objectsName = value;
               },
@@ -721,11 +754,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(hintText: "Compartilhe a história do animal"),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-              },
               onSaved: (String value) {
                 this._animal.about = value;
               },
@@ -749,6 +777,11 @@ class MyCustomFormState extends State<MyCustomForm> {
                       this._animal.size = porte;
                       this._animal.age = idade;
                       this._animal.temperament = temperamento;
+                      this._animal.health = health;
+                      this._animal.demands = demands;
+                      this._animal.needs = needs;
+                      this._animal.objects = objects;
+                      
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
                       AnimalController().registerAnimal(_animal);
