@@ -8,7 +8,7 @@ class AnimalController {
 
   void registerAnimal(Animal animal) async {
     final String id = await AuthController().getCurrentUser(); 
-    final animalReference = FirebaseDatabase.instance.reference().child("animal").child(id).child(animal.name);
+    final animalReference = FirebaseDatabase.instance.reference().child("animal").child(id).push().child(animal.name);
 
     var newAnimal = <String, dynamic>{
       'userId': id,
@@ -31,6 +31,6 @@ class AnimalController {
       'needs': animal.needs,
     };
 
-    animalReference.push().set(newAnimal);
+    animalReference.set(newAnimal);
   }
 }

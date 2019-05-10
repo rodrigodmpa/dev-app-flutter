@@ -23,8 +23,8 @@ class AuthController {
       'state': user.state,
       'phone': user.phone,
     };
-
     userReference.set(newUser);
+    loggedUser = user;
     logged = true;
   }
 

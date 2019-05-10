@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/auth/AuthController.dart';
 import '../util/colors.dart';
 class Menu extends StatelessWidget {
   const Menu({
@@ -15,9 +16,17 @@ class Menu extends StatelessWidget {
           decoration: BoxDecoration(
             color: primaryColor,
           ),
-          child: new Text(
-            'Meau',
-            style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
+          child: Column(
+            children: <Widget>[
+              new Text(
+                'Meau',
+                style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
+              ),
+              Text(
+                AuthController.loggedUser.name,
+                style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
+              ),
+            ],
           ),
         ),
         new ListTile(

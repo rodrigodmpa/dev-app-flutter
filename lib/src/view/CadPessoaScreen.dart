@@ -113,11 +113,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(hintText: "Idade:"),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-              },
               onSaved: (String value) {
                 this._user.idade = value;
               },
@@ -141,11 +136,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(hintText: "Estado:"),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-              },
               onSaved: (String value) {
                 this._user.state = value;
               },
@@ -169,11 +159,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(hintText: "Telefone:"),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-              },
               onSaved: (String value) {
                 this._user.phone = value;
               },
