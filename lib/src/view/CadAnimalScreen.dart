@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/auth/AuthController.dart';
 import '../util/MyFunctions.dart';
 import 'Widgets.dart';
 import '../util/colors.dart';
@@ -16,7 +17,7 @@ class CadAnimalScreen extends StatelessWidget {
     double devicePixelRatio = queryData.devicePixelRatio;
     double sizeOfWidthScreen = queryData.size.width - 8;
     double sizeOfHeightScreen = queryData.size.height;
-    if (1 == 1) {
+    if (AuthController.logged) {
       return Scaffold(
         appBar: AppBar(
           title: Text("Cadastro Animal"),

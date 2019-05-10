@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/auth/AuthController.dart';
 import '../util/MyFunctions.dart';
 import 'Widgets.dart';
 import '../util/colors.dart';
@@ -264,8 +265,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
 
+                      AuthController().registerUser(_user);
+                      Navigator.pushNamed(context, '/');
                       print('Printing the login data.');
-                      print('User: ${_user.address.toString()}');
+                      print('User: ${_user.toString()}');
                     }
                   },
                   child: Text('Fazer Cadastro'),
