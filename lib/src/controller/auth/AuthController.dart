@@ -7,6 +7,7 @@ class AuthController {
   final reference = FirebaseDatabase.instance.reference();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   static bool logged = false;
+  static User loggedUser;
 
   void registerUser(User user) async {
     final String id = await signUpWithEmailAndPassword(user.email, user.password); 

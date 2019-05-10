@@ -104,7 +104,7 @@ class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.sex,
+                          animal.sex.toString(),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -132,7 +132,7 @@ class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.size,
+                          animal.size.toString(),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -160,7 +160,7 @@ class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.idade.toString() + ' anos',
+                          animal.age.toString() + ' anos',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -348,7 +348,7 @@ class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.temperament,
+                          animal.temperament.toString(),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -383,7 +383,7 @@ class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.needs,
+                          animal.needs.toString(),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -418,7 +418,7 @@ class _AjudarAnimalScreenState extends State<AjudarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.sobre,
+                          animal.about.toString(),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,

@@ -169,6 +169,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   int sexo = 1;
   int porte = 1;
   int idade = 1;
+  List<int> temperamento = new List(6);
 
   void _value1Changed(bool value) => setState(() => _value1 = value);
   void _value2Changed(bool value) => setState(() => _value2 = value);
@@ -281,10 +282,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           Row(
             children: <Widget>[
               new Radio(
-                value: 1,
+                value: 0,
                 groupValue: especie,
                 onChanged: (int value) {
-                  especie = 1;
+                  especie = 0;
                   setState(() {
                   });
                 },
@@ -294,10 +295,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                 style: new TextStyle(fontSize: 16.0),
               ),
               new Radio(
-                value: 0,
+                value: 1,
                 groupValue: especie,
                 onChanged: (int value) {
-                  especie = 0;
+                  especie = 1;
                   setState(() {
                   });
                 },
@@ -329,10 +330,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           Row(
             children: <Widget>[
               new Radio(
-                value: 1,
+                value: 0,
                 groupValue: sexo,
                 onChanged: (int value) {
-                  sexo = 1;
+                  sexo = 0;
                   setState(() {
                   });
                 },
@@ -342,10 +343,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                 style: new TextStyle(fontSize: 16.0),
               ),
               new Radio(
-                value: 0,
+                value: 1,
                 groupValue: sexo,
                 onChanged: (int value) {
-                  sexo = 0;
+                  sexo = 1;
                   setState(() {
                   });
                 },
@@ -377,10 +378,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           Row(
             children: <Widget>[
               new Radio(
-                value: 1,
+                value: 0,
                 groupValue: porte,
                 onChanged: (int value) {
-                  porte = 1;
+                  porte = 0;
                   setState(() {
                   });
                 },
@@ -390,10 +391,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                 style: new TextStyle(fontSize: 16.0),
               ),
               new Radio(
-                value: 0,
+                value: 1,
                 groupValue: porte,
                 onChanged: (int value) {
-                  porte = 0;
+                  porte = 1;
                   setState(() {
                   });
                 },
@@ -440,10 +441,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           Row(
             children: <Widget>[
               new Radio(
-                value: 1,
+                value: 0,
                 groupValue: idade,
                 onChanged: (int value) {
-                  idade = 1;
+                  idade = 0;
                   setState(() {
                   });
                 },
@@ -453,10 +454,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                 style: new TextStyle(fontSize: 16.0),
               ),
               new Radio(
-                value: 0,
+                value: 1,
                 groupValue: idade,
                 onChanged: (int value) {
-                  idade = 0;
+                  idade = 1;
                   setState(() {
                   });
                 },
@@ -502,21 +503,45 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value1, onChanged: _value1Changed),
+              Checkbox(value: _value1, onChanged: (bool value) {
+                _value1 = value;
+                value ? temperamento[0] = 1 : temperamento[0] = 0;
+                setState(() {});
+              }),
               Text("Brincalhão"),
-              Checkbox(value: _value2, onChanged: _value2Changed),
+              Checkbox(value: _value2, onChanged: (bool value) {
+                _value2 = value;
+                value ? temperamento[1] = 1 : temperamento[1] = 0;
+                setState(() {});
+              }),
               Text("Tímido"),
-              Checkbox(value: _value3, onChanged: _value3Changed),
+              Checkbox(value: _value3, onChanged: (bool value) {
+                _value3 = value;
+                value ? temperamento[2] = 1 : temperamento[2] = 0;
+                setState(() {});
+              }),
               Text("Calmo"),
             ],
           ),
           Row(
             children: <Widget>[
-              Checkbox(value: _value4, onChanged: _value4Changed),
+              Checkbox(value: _value4, onChanged: (bool value) {
+                _value4 = value;
+                value ? temperamento[3] = 1 : temperamento[3] = 0;
+                setState(() {});
+              }),
               Text("Guarda"),
-              Checkbox(value: _value5, onChanged: _value5Changed),
+              Checkbox(value: _value5, onChanged: (bool value) {
+                _value5 = value;
+                value ? temperamento[4] = 1 : temperamento[4] = 0;
+                setState(() {});
+              }),
               Text("Amoroso"),
-              Checkbox(value: _value6, onChanged: _value6Changed),
+              Checkbox(value: _value6, onChanged: (bool value) {
+                _value6 = value;
+                value ? temperamento[5] = 1 : temperamento[5] = 0;
+                setState(() {});
+              }),
               Text("Preguiçoso"),
             ],
           ),
@@ -562,7 +587,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
               },
               onSaved: (String value) {
-                this._animal.needs = value;
+                this._animal.disease = value;
               },
             ),
           ),
@@ -652,7 +677,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
               },
               onSaved: (String value) {
-                this._animal.needs = value;
+                this._animal.medicationName = value;
               },
             ),
           ),
@@ -672,7 +697,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
               },
               onSaved: (String value) {
-                this._animal.needs = value;
+                this._animal.objectsName = value;
               },
             ),
           ),
@@ -702,7 +727,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
               },
               onSaved: (String value) {
-                this._animal.sobre = value;
+                this._animal.about = value;
               },
             ),
           ),
@@ -719,10 +744,11 @@ class MyCustomFormState extends State<MyCustomForm> {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
                       // If the form is valid, we want to show a Snackbar
-                      this._animal.species = especie.toString();
-                      this._animal.sex = sexo.toString();
-                      this._animal.size = porte.toString();
-                      this._animal.idade = idade;
+                      this._animal.species = especie;
+                      this._animal.sex = sexo;
+                      this._animal.size = porte;
+                      this._animal.age = idade;
+                      this._animal.temperament = temperamento;
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
                       AnimalController().registerAnimal(_animal);

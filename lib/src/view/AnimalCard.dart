@@ -76,7 +76,7 @@ class _AnimalCardState extends State<AnimalCard> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Center(child: Text(widget.animal.sex.toUpperCase())),
+                        Center(child: Text(widget.animal.sex.toString().toUpperCase())),
                       ],
                     ),
                   ),
@@ -84,7 +84,7 @@ class _AnimalCardState extends State<AnimalCard> {
                     width: sizeOfWidthScreen / 3,
                     child: Column(
                       children: <Widget>[
-                        Center(child: Text(widget.animal.idade.toString()+' ANOS')),
+                        Center(child: Text(widget.animal.age.toString()+' ANOS')),
                       ],
                     ),
                   ),
@@ -92,7 +92,7 @@ class _AnimalCardState extends State<AnimalCard> {
                     width: sizeOfWidthScreen / 3,
                     child: Column(
                       children: <Widget>[
-                        Center(child: Text(widget.animal.size.toUpperCase())),
+                        Center(child: Text(widget.animal.size.toString().toUpperCase())),
                       ],
                     ),
                   ),

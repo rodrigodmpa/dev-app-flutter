@@ -17,16 +17,20 @@ class AnimalController {
       'species': animal.species,
       'sex': animal.sex,
       'size': animal.size,
-      'idade': animal.idade,
+      'age': animal.age,
       'temperament': animal.temperament,
       'demands': animal.demands,
+      'medicationName': animal.medicationName,
+      'objects': animal.objects,
+      'objectsName': animal.objectsName,
+      'disease': animal.disease,
       'health': animal.health,
-      'sobre': animal.sobre,
+      'about': animal.about,
       'pictureRoute': animal.pictureRoute,
-      'address': animal.address,
+      'address': "sqn2",//animal.address,
       'needs': animal.needs,
     };
 
-    animalReference.set(newAnimal);
+    animalReference.push().set(newAnimal);
   }
 }

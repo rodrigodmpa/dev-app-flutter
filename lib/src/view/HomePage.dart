@@ -16,7 +16,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;
-    createInitialAnimals();
+    // createInitialAnimals();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -92,35 +92,35 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  void createInitialAnimals(){
-    final databaseReference = FirebaseDatabase.instance.reference();
+  // void createInitialAnimals(){
+  //   final databaseReference = FirebaseDatabase.instance.reference();
 
-    List<Animal> animais = [
-      Animal(id: 1,idade: 3,name: "Iron Man",sex: "Macho",sobre: "Este animal é Feio",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Médio",temperament: "Suave", interest: 2,pictureRoute: "asset/dog2.jpeg",address: "SQN 2"),
-      Animal(id: 2,idade: 4,name: "Cp America",sex: "Fêmea",sobre: "Este animal é estranho",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Pequeno",temperament: "Tranqs", interest: 3,pictureRoute: "asset/dog3.jpeg",address: "SQN 3"),
-      Animal(id: 3,idade: 5,name: "Hulk",sex: "Macho",sobre: "Este animal é diferente",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 4,pictureRoute: "asset/dog4.jpeg",address: "SQN 4"),
-      Animal(id: 4,idade: 6,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
-      Animal(id: 5,idade: 7,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
-      Animal(id: 6,idade: 8,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
-      Animal(id: 7,idade: 9,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
-    ];
+  //   List<Animal> animais = [
+  //     Animal(id: 1,idade: 3,name: "Iron Man",sex: "Macho",sobre: "Este animal é Feio",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Médio",temperament: "Suave", interest: 2,pictureRoute: "asset/dog2.jpeg",address: "SQN 2"),
+  //     Animal(id: 2,idade: 4,name: "Cp America",sex: "Fêmea",sobre: "Este animal é estranho",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Pequeno",temperament: "Tranqs", interest: 3,pictureRoute: "asset/dog3.jpeg",address: "SQN 3"),
+  //     Animal(id: 3,idade: 5,name: "Hulk",sex: "Macho",sobre: "Este animal é diferente",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 4,pictureRoute: "asset/dog4.jpeg",address: "SQN 4"),
+  //     Animal(id: 4,idade: 6,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+  //     Animal(id: 5,idade: 7,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+  //     Animal(id: 6,idade: 8,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+  //     Animal(id: 7,idade: 9,name: "Rodrigo",sex: "Macho",sobre: "Este animal é bonito",userId: 0,demands: "Termo de adoção, fotos da casa, visita prévia e acompanhamento durante três meses",species: "DogÃo",size: "Grande",temperament: "Agressivo", interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),
+  //   ];
 
-    // Cria registro no BD com os animais da lista
-    DatabaseReference animaisRef = databaseReference.child("animais");
-    for(int i=0; i<animais.length; i++) {
-      String idStr = animais[i].id.toString();
-      animaisRef.child(idStr).set(jsonEncode(animais[i]));
-    }
+  //   // Cria registro no BD com os animais da lista
+  //   DatabaseReference animaisRef = databaseReference.child("animais");
+  //   for(int i=0; i<animais.length; i++) {
+  //     String idStr = animais[i].id.toString();
+  //     animaisRef.child(idStr).set(jsonEncode(animais[i]));
+  //   }
 
-    // Lê os registros do BD
-    databaseReference.once().then((DataSnapshot snapshot){
-      Map<dynamic, dynamic> values = snapshot.value;
-      values.forEach((key,values) {
-        print(key);
-        print(values);
-      });
-    });
-  }
+  //   // Lê os registros do BD
+  //   databaseReference.once().then((DataSnapshot snapshot){
+  //     Map<dynamic, dynamic> values = snapshot.value;
+  //     values.forEach((key,values) {
+  //       print(key);
+  //       print(values);
+  //     });
+  //   });
+  // }
 
 }
 
