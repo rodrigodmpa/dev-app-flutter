@@ -3,17 +3,17 @@ import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
 class Animal {
-  int userId;
+  String userId;
   String name;
   int interest;
   int species;
   int sex;
   int size;
   int age;
-  List<int> temperament = new List(6);
-  List<int> demands = new List(3);
-  List<int> health = new List(4);
-  List<int> needs = new List(3);
+  List<dynamic> temperament = new List(6);
+  List<dynamic> demands = new List(3);
+  List<dynamic> health = new List(4);
+  List<dynamic> needs = new List(3);
   String medicationName;
   int objects;
   String objectsName;

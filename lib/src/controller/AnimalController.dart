@@ -7,10 +7,8 @@ class AnimalController {
 
   void registerAnimal(Animal animal) async {
     final String id = await AuthController().getCurrentUser();
-    final animalReference = FirebaseDatabase.instance
-        .reference()
-        .child("animal")
-        .push();
+    final animalReference =
+        FirebaseDatabase.instance.reference().child("animal").push();
 
     var newAnimal = <String, dynamic>{
       'userId': id,
@@ -37,38 +35,39 @@ class AnimalController {
   }
 
   Future<List<Animal>> getAnimals() async {
-    Future<List<Animal>> listOfAnimals;
-    List<Map<String, dynamic>> maps;
+    List<Animal> listOfAnimals = [];
+    Map<dynamic, dynamic> maps;
     await FirebaseDatabase.instance.reference().child('animal').once().then(
       (DataSnapshot snapshot) {
         maps = snapshot.value;
-        print('Data : ${snapshot.value}');
+        // print('Data : ${snapshot.value.values}');
       },
     );
-    return List.generate(
-    maps.length,
-    (i) {
-      return Animal(
-        userId: maps[i]['userId'],
-        about: maps[i]['about'],
-        address: maps[i]['address'],
-        age: maps[i]['age'],
-        demands: maps[i]['demands'],
-        disease: maps[i]['disease'],
-        health: maps[i]['health'],
-        interest: maps[i]['interest'],
-        medicationName: maps[i]['medicationName'],
-        name: maps[i]['name'],
-        needs: maps[i]['needs'],
-        objects: maps[i]['objects'],
-        objectsName: maps[i]['objectsName'],
-        pictureRoute: maps[i]['pictureRoute'],
-        sex: maps[i]['sex'],
-        size: maps[i]['size'],
-        species: maps[i]['species'],
-        temperament: maps[i]['temperament'],
-      );
-    },
-  );
+
+    maps.forEach(
+      (k, v) => listOfAnimals.add(
+            Animal(
+              userId: v['userId'],
+              about: v['about'],
+              address: v['address'],
+              age: v['age'],
+              demands: v['demands'],
+              disease: v['disease'],
+              health: v['health'],
+              interest: v['interest'],
+              medicationName: v['medicationName'],
+              name: v['name'],
+              needs: v['needs'],
+              objects: v['objects'],
+              objectsName: v['objectsName'],
+              pictureRoute: v['pictureRoute'],
+              sex: v['sex'],
+              size: v['size'],
+              species: v['species'],
+              temperament: v['temperament'],
+            ),
+          ),
+    );
+    return listOfAnimals;
   }
 }
