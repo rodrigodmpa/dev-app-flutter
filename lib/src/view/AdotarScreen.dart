@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/AnimalController.dart';
 import 'AnimalCard.dart';
 import '../model/Animal.dart';
 import 'package:image_picker/image_picker.dart';
@@ -7,9 +8,16 @@ import 'package:firebase_database/firebase_database.dart';
 
 class AdotarScreen extends StatelessWidget {
   // final databaseReference = FirebaseDatabase.instance.reference();
+  Future<List<Animal>> animals;
 
   @override
   Widget build(BuildContext context) {
+    try{
+      animals = AnimalController().getAnimals();
+      print(animals);
+    } catch(e) {
+
+    }
     // return StreamBuilder<Event>(
     //                 stream: FirebaseDatabase.instance
     //                     .reference()
