@@ -41,6 +41,7 @@ class AuthController {
       email: email,
       password: password,
     );
+    loggedUser = await getUserData();
     logged = true;
     return userFirebase != null;
   }
@@ -48,6 +49,26 @@ class AuthController {
   Future<String> getCurrentUser() async {
     FirebaseUser user = await _auth.currentUser();
     return user.uid;
+  }
+
+  Future<User> getUserData() async {
+    final String id = await AuthController().getCurrentUser();
+    User user;
+    Map<dynamic, dynamic> maps;
+    await FirebaseDatabase.instance
+        .reference()
+        .child('user')
+        .child(id)
+        .once()
+        .then(
+      (DataSnapshot snapshot) {
+        maps = snapshot.value;
+        // print('Data : ${snapshot.value.values}');
+      },
+    );
+
+    user = User(address: maps["address"], email: maps["email"], id: id, idade: maps["idade"], name: maps["name"], password: maps["password"], phone: maps["phone"], state: maps["state"], userName: maps["userName"]);
+    return user;
   }
 
   Future<void> signOut() async {
