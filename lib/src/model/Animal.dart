@@ -22,6 +22,7 @@ class Animal {
   String about;
   String pictureRoute;
   String address;
+  bool favorite;
 
   Animal(
       {this.id,
@@ -42,7 +43,8 @@ class Animal {
       this.disease,
       this.about,
       this.pictureRoute,
-      this.address});
+      this.address,
+      this.favorite});
 
   /// A necessary factory constructor for creating a new User instance
   /// from a map. Pass the map to the generated `_$UserFromJson()` constructor.

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/AnimalController.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../model/Animal.dart';
@@ -52,8 +53,13 @@ class _AnimalCardState extends State<AnimalCard> {
                     child: Text(widget.animal.name),
                   ),
                   IconButton(
-                    icon: Icon(Icons.favorite_border),
-                    onPressed: () => {},
+                    icon: Icon(widget.animal.favorite
+                                ? Icons.favorite
+                                : Icons.favorite_border),
+                    onPressed: () async => {
+                      widget.animal.favorite = await AnimalController().setFavoriteAnimal(widget.animal.id, widget.animal.favorite),
+                      setState(() {})
+                    },
                   ),
                 ],
               ),
