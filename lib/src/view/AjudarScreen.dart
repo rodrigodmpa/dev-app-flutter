@@ -40,7 +40,7 @@ class _ContentState extends State<Content> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: AnimalController().getAnimals(),
+      future: AnimalController().getAnimals("ajudar"),
       builder: (BuildContext context, AsyncSnapshot<List<Animal>> snapshot) {
         if (!snapshot.hasData)
           return Center(child: CircularProgressIndicator());

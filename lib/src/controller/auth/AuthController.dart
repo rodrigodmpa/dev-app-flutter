@@ -11,7 +11,7 @@ class AuthController {
   static bool logged = false;
   static User loggedUser;
 
-  void registerUser(User user) async {
+  void registerUser(User user, File image) async {
     final String id =
         await signUpWithEmailAndPassword(user.email, user.password);
     final userReference =
@@ -92,10 +92,9 @@ class AuthController {
     return _auth.signOut();
   }
 
-  Future<String> _pickSaveImage(String imageId, File imageFile) async {
-    final String id = await AuthController().getCurrentUser();
+  Future<String> saveUserImage(String userId, File imageFile) async {
     StorageReference ref =
-        FirebaseStorage.instance.ref().child(id).child("image.jpg");
+        FirebaseStorage.instance.ref().child("user_picture").child(userId);
     StorageUploadTask uploadTask = ref.putFile(imageFile);
     return await (await uploadTask.onComplete).ref.getDownloadURL();
   }

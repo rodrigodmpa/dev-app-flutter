@@ -250,7 +250,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
 
-                      AuthController().registerUser(_user);
+                      AuthController().registerUser(_user, _image);
                       Navigator.pushNamed(context, '/');
                       print('Printing the login data.');
                       print('User: ${_user.toString()}');

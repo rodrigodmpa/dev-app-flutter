@@ -1,14 +1,22 @@
+import 'dart:io';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:myapp/src/controller/auth/AuthController.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import '../model/Animal.dart';
 
 class AnimalController {
   final reference = FirebaseDatabase.instance.reference();
 
-  void registerAnimal(Animal animal) async {
+  void registerAnimal(Animal animal, String treeLevel, File image) async {
     final String id = await AuthController().getCurrentUser();
-    final animalReference =
-        FirebaseDatabase.instance.reference().child("animal").push();
+    final animalReference = FirebaseDatabase.instance
+        .reference()
+        .child("animal")
+        .child(treeLevel)
+        .push();
+
+    final String url = await saveAnimalImage(animalReference.key, image);
 
     var newAnimal = <String, dynamic>{
       'userId': id,
@@ -26,7 +34,7 @@ class AnimalController {
       'disease': animal.disease,
       'health': animal.health,
       'about': animal.about,
-      'pictureRoute': animal.pictureRoute,
+      'pictureRoute': url,
       'address': "sqn2", //animal.address,
       'needs': animal.needs,
     };
@@ -34,43 +42,50 @@ class AnimalController {
     animalReference.set(newAnimal);
   }
 
-  Future<List<Animal>> getAnimals() async {
+  Future<List<Animal>> getAnimals(String treeLevel) async {
     List<Animal> listOfAnimals = [];
     List<String> favoritee = await getFavoriteAnimal();
     Map<dynamic, dynamic> favorites;
     Map<dynamic, dynamic> maps;
-    await FirebaseDatabase.instance.reference().child('animal').once().then(
+    await FirebaseDatabase.instance
+        .reference()
+        .child('animal')
+        .child(treeLevel)
+        .once()
+        .then(
       (DataSnapshot snapshot) {
         maps = snapshot.value;
         // print('Data : ${snapshot.value.values}');
       },
     );
 
-    maps.forEach(
-      (k, v) => listOfAnimals.add(
-            Animal(
-                id: k,
-                userId: v['userId'],
-                about: v['about'],
-                address: v['address'],
-                age: v['age'],
-                demands: v['demands'],
-                disease: v['disease'],
-                health: v['health'],
-                interest: v['interest'],
-                medicationName: v['medicationName'],
-                name: v['name'],
-                needs: v['needs'],
-                objects: v['objects'],
-                objectsName: v['objectsName'],
-                pictureRoute: v['pictureRoute'],
-                sex: v['sex'],
-                size: v['size'],
-                species: v['species'],
-                temperament: v['temperament'],
-                favorite: favoritee.contains(k)),
-          ),
-    );
+    if (maps != null) {
+      maps.forEach(
+        (k, v) => listOfAnimals.add(
+              Animal(
+                  id: k,
+                  userId: v['userId'],
+                  about: v['about'],
+                  address: v['address'],
+                  age: v['age'],
+                  demands: v['demands'],
+                  disease: v['disease'],
+                  health: v['health'],
+                  interest: v['interest'],
+                  medicationName: v['medicationName'],
+                  name: v['name'],
+                  needs: v['needs'],
+                  objects: v['objects'],
+                  objectsName: v['objectsName'],
+                  pictureRoute: v['pictureRoute'],
+                  sex: v['sex'],
+                  size: v['size'],
+                  species: v['species'],
+                  temperament: v['temperament'],
+                  favorite: favoritee.contains(k)),
+            ),
+      );
+    }
     return listOfAnimals;
   }
 
@@ -115,5 +130,12 @@ class AnimalController {
     }
 
     return listOfAnimals;
+  }
+
+  Future<String> saveAnimalImage(String animalId, File imageFile) async {
+    StorageReference ref =
+        FirebaseStorage.instance.ref().child("animal_picture").child(animalId);
+    StorageUploadTask uploadTask = ref.putFile(imageFile);
+    return await (await uploadTask.onComplete).ref.getDownloadURL();
   }
 }

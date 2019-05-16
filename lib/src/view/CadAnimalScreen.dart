@@ -749,7 +749,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')));
-                      AnimalController().registerAnimal(_animal);
+                      AnimalController().registerAnimal(_animal, "ajudar", _image);
                       print('Printing the login data.');
                       print('Animal: ${_animal.toString()}');
                     }
