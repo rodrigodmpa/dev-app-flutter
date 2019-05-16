@@ -33,11 +33,10 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
           children: <Widget>[
             Container(
               height: sizeOfHeightScreen / 3.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("asset/dog2.jpeg"),
-                  fit: BoxFit.fill,
-                ),
+              decoration: new BoxDecoration(
+                image: new DecorationImage(
+                    image: new NetworkImage(animal.pictureRoute),
+                    fit: BoxFit.cover),
               ),
             ),
             Row(

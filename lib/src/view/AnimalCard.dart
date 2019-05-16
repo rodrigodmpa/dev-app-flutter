@@ -21,6 +21,7 @@ class _AnimalCardState extends State<AnimalCard> {
 
   @override
   Widget build(BuildContext context) {
+    NetworkImage image = NetworkImage(widget.animal.pictureRoute);
     queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;
     double sizeOfWidthScreen = queryData.size.width - 8;
