@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/AnimalController.dart';
 import 'AnimalCard.dart';
 import '../model/Animal.dart';
 import 'package:image_picker/image_picker.dart';
 import '../view/Menu.dart';
 
 class AjudarScreen extends StatelessWidget {
+  Future<List<Animal>> animals = AnimalController().getAnimals();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,21 +17,40 @@ class AjudarScreen extends StatelessWidget {
         elevation: 4,
       ),
       drawer: Menu(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            AnimalCard(animal : Animal(age: 2,name: "Thor",sex: 1,about: "Este animal é bonito",userId: "0",demands: [0,1],species: 0,size: 0,temperament: [0,1], interest: 1,pictureRoute: "asset/dog1.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(age: 3,name: "Iron Man",sex: 1,about: "Este animal é Feio",userId: "0",demands: [0,1],species: 0,size: 1,temperament: [0,1], interest: 2,pictureRoute: "asset/dog2.jpeg",address: "SQN 2"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(age: 4,name: "Cp America",sex: 2,about: "Este animal é estranho",userId: "0",demands: [0,1],species: 0,size: 2,temperament: [0,1], interest: 3,pictureRoute: "asset/dog3.jpeg",address: "SQN 3"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(age: 5,name: "Hulk",sex: 1,about: "Este animal é diferente",userId: "0",demands: [0,1],species: 0,size: 0,temperament: [0,1], interest: 4,pictureRoute: "asset/dog4.jpeg",address: "SQN 4"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(age: 6,name: "Rodrigo",sex: 1,about: "Este animal é bonito",userId: "0",demands: [0,1],species: 0,size: 0,temperament: [0,1], interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(age: 7,name: "Rodrigo",sex: 1,about: "Este animal é bonito",userId: "0",demands: [0,1],species: 0,size: 0,temperament: [0,1], interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(age: 8,name: "Rodrigo",sex: 1,about: "Este animal é bonito",userId: "0",demands: [0,1],species: 0,size: 0,temperament: [0,1], interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            AnimalCard(animal : Animal(age: 9,name: "Rodrigo",sex: 1,about: "Este animal é bonito",userId: "0",demands: [0,1],species: 0,size: 0,temperament: [0,1], interest: 1,pictureRoute: "asset/dog2.jpeg",address: "SQN 1"),onTapPath: "/adotar_animal_screen",),
-            
-          ],
-        ),
-      ),
+      body: Content(animals: animals),
+    );
+  }
+}
+
+class Content extends StatefulWidget {
+  const Content({
+    Key key,
+    @required this.animals,
+  }) : super(key: key);
+
+  final Future<List<Animal>> animals;
+
+  @override
+  _ContentState createState() => _ContentState();
+}
+
+class _ContentState extends State<Content> {
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: AnimalController().getAnimals(),
+      builder: (BuildContext context, AsyncSnapshot<List<Animal>> snapshot){
+        if(!snapshot.hasData) return Container();
+        return Center(
+          child: ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder: (BuildContext ctxt, int index) {
+              return new AnimalCard(animal: snapshot.data[index], onTapPath: "/adotar_animal_screen");
+            }
+          ),
+        );
+      },
     );
   }
 }

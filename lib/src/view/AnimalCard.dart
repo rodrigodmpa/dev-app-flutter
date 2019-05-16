@@ -62,7 +62,7 @@ class _AnimalCardState extends State<AnimalCard> {
               height: sizeOfHeightScreen / 3.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(widget.animal.pictureRoute),
+                  image: AssetImage("asset/dog1.jpeg"),
                   fit: BoxFit.fill,
                 ),
               ),

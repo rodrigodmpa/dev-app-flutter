@@ -47,6 +47,7 @@ class AnimalController {
     maps.forEach(
       (k, v) => listOfAnimals.add(
             Animal(
+              id: k,
               userId: v['userId'],
               about: v['about'],
               address: v['address'],

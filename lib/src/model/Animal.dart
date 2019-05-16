@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
 class Animal {
+  String id;
   String userId;
   String name;
   int interest;
@@ -23,7 +24,8 @@ class Animal {
   String address;
 
   Animal(
-      {this.userId,
+      {this.id,
+      this.userId,
       this.name,
       this.interest,
       this.species,

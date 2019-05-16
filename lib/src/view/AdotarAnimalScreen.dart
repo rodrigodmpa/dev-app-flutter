@@ -35,7 +35,7 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
               height: sizeOfHeightScreen / 3.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(animal.pictureRoute),
+                  image: AssetImage("asset/dog2.jpeg"),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -102,7 +102,7 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.sex.toString(),
+                          animal.sex == 0 ? "Macho" : "Fêmea",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -130,7 +130,7 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.size.toString(),
+                          animal.size == 0 ? "Pequeno" : animal.size == 1 ? "Médio" : "Grande",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -158,7 +158,7 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.age.toString() + ' anos',
+                          animal.age == 0 ? "Filhote" : animal.age == 1 ? "Adulto" : "Idoso" + ' anos',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -346,7 +346,7 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.temperament.toString(),
+                          animal.temperament[0] == 1 ? "Brincalhão, " : "" + (animal.temperament[1] == 1 ? "Tímido, " : "") + (animal.temperament[2] == 1 ? "Calmo, " : "") + (animal.temperament[3] == 1 ? "Guarda, " : "") + (animal.temperament[4] == 1 ? "Amoroso, " : "") + (animal.temperament[5] == 1 ? "Preguiçoso" : ""),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -381,7 +381,7 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.demands.toString(),
+                          animal.demands[0] == 1 ? "Termo de Apadrinhamento " : "" + (animal.demands[1] == 1 ? "Auxílio financeiro" : "") + (animal.demands[2] == 1 ? "Visitas ao animal" : ""), 
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
