@@ -70,7 +70,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   User _user = User();
   Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    var image = await ImagePicker.pickImage(source: ImageSource.camera, maxHeight:  200 , maxWidth: 200);
 
     setState(() {
       _image = image;
