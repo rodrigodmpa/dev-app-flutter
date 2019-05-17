@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/controller/AnimalController.dart';
 import 'package:myapp/src/model/Animal.dart';
 import '../util/colors.dart';
 import '../view/Widgets.dart';
@@ -52,10 +53,9 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                         child: Text(
                           animal.name,
                           style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold
-                          ),
+                              color: Colors.black,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
@@ -129,7 +129,9 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.size == 0 ? "Pequeno" : animal.size == 1 ? "Médio" : "Grande",
+                          animal.size == 0
+                              ? "Pequeno"
+                              : animal.size == 1 ? "Médio" : "Grande",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -157,7 +159,9 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.age == 0 ? "Filhote" : animal.age == 1 ? "Adulto" : "Idoso",
+                          animal.age == 0
+                              ? "Filhote"
+                              : animal.age == 1 ? "Adulto" : "Idoso",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -345,7 +349,24 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.temperament[0] == 1 ? "Brincalhão, " : "" + (animal.temperament[1] == 1 ? "Tímido, " : "") + (animal.temperament[2] == 1 ? "Calmo, " : "") + (animal.temperament[3] == 1 ? "Guarda, " : "") + (animal.temperament[4] == 1 ? "Amoroso, " : "") + (animal.temperament[5] == 1 ? "Preguiçoso" : ""),
+                          animal.temperament[0] == 1
+                              ? "Brincalhão, "
+                              : "" +
+                                  (animal.temperament[1] == 1
+                                      ? "Tímido, "
+                                      : "") +
+                                  (animal.temperament[2] == 1
+                                      ? "Calmo, "
+                                      : "") +
+                                  (animal.temperament[3] == 1
+                                      ? "Guarda, "
+                                      : "") +
+                                  (animal.temperament[4] == 1
+                                      ? "Amoroso, "
+                                      : "") +
+                                  (animal.temperament[5] == 1
+                                      ? "Preguiçoso"
+                                      : ""),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -380,7 +401,15 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
                         child: Text(
-                          animal.demands[0] == 1 ? "Termo de Apadrinhamento " : "" + (animal.demands[1] == 1 ? "Auxílio financeiro" : "") + (animal.demands[2] == 1 ? "Visitas ao animal" : ""), 
+                          animal.demands[0] == 1
+                              ? "Termo de Apadrinhamento "
+                              : "" +
+                                  (animal.demands[1] == 1
+                                      ? "Auxílio financeiro"
+                                      : "") +
+                                  (animal.demands[2] == 1
+                                      ? "Visitas ao animal"
+                                      : ""),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -430,7 +459,50 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
             Padding(
               padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48, devicePixelRatio), 0,
                   Dp2Pixel(12, devicePixelRatio)),
-              child: new ButtonWidget(text: "PRETENDO ADOTAR", rota: ''),
+              child: RaisedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      // return object of type Dialog
+                      return AlertDialog(
+                        title: new Text("Confirmar ação de adotar?"),
+                        actions: <Widget>[
+                          // usually buttons at the bottom of the dialog
+                          new FlatButton(
+                            child: new Text("Cancelar"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          new FlatButton(
+                            child: new Text("Confirmar"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pop();
+                              AnimalController().setIntendToAdopt(animal.id);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                color: primaryLightColor,
+                child: Container(
+                  width: 232,
+                  height: 40,
+                  child: Center(
+                    child: Text(
+                      "Pretendo adotar",
+                      style: TextStyle(
+                          color: Color(0xff434343),
+                          fontSize: 12,
+                          fontFamily: "Roboto"),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),

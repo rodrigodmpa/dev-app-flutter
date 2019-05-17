@@ -104,6 +104,12 @@ class AuthController {
     userUrl = await ref.getDownloadURL();
   }
 
+  Future<String> getUserImageGoGo(String userId) async {
+    StorageReference ref =
+        FirebaseStorage.instance.ref().child("user_picture").child(userId);
+    return await ref.getDownloadURL();
+  }
+
   Future<String> saveUserImage(String userId, File imageFile) async {
     userImage = imageFile;
     StorageReference ref =

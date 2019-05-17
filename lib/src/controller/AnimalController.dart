@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:myapp/src/controller/auth/AuthController.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:myapp/src/model/User.dart';
 import '../model/Animal.dart';
 
 class AnimalController {
@@ -229,6 +230,79 @@ class AnimalController {
       });
     }
     return listOfAnimals;
+  }
+
+  void setIntendToAdopt(String animalId) async {
+    final String id = await AuthController().getCurrentUser();
+    final animalReference = FirebaseDatabase.instance
+        .reference()
+        .child("intend_adopt")
+        .child(animalId);
+
+    var newFavorite = <String, String>{
+      id: "",
+    };
+
+    animalReference.update(newFavorite);
+  }
+
+  Future<List<User>> getIntendUser(String animalId) async {
+    List<String> listOfUsersIds = await getIntendToAdopt(animalId);
+
+    List<User> listOfUsers = [];
+    String userId = await AuthController().getCurrentUser();
+    Map<dynamic, dynamic> maps;
+    await FirebaseDatabase.instance.reference().child('user').once().then(
+      (DataSnapshot snapshot) {
+        maps = snapshot.value;
+        // print('Data : ${snapshot.value.values}');
+      },
+    );
+
+    if (maps != null) {
+      maps.forEach((k, v) {
+        if (listOfUsersIds.contains(k)) {
+          listOfUsers.add(
+            User(
+                address: v["address"],
+                email: v["email"],
+                id: k,
+                idade: v["idade"],
+                name: v["name"],
+                password: v["password"],
+                phone: v["phone"],
+                state: v["state"],
+                userName: v["userName"]),
+          );
+        }
+      });
+    }
+    return listOfUsers;
+  }
+
+  Future<List<String>> getIntendToAdopt(String animalId) async {
+    final String id = await AuthController().getCurrentUser();
+    List<String> listOfUsers = [];
+    Map<dynamic, dynamic> maps;
+    await FirebaseDatabase.instance
+        .reference()
+        .child('intend_adopt')
+        .child(animalId)
+        .once()
+        .then(
+      (DataSnapshot snapshot) {
+        maps = snapshot.value;
+        // print('Data : ${snapshot.value.values}');
+      },
+    );
+
+    if (maps != null) {
+      maps.forEach(
+        (k, v) => listOfUsers.add(k),
+      );
+    }
+
+    return listOfUsers;
   }
 
   Future<bool> setFavoriteAnimal(String animalId, bool favorite) async {

@@ -50,7 +50,7 @@ class _ContentState extends State<Content> {
               itemBuilder: (BuildContext ctxt, int index) {
                 return new AnimalCard(
                     animal: snapshot.data[index],
-                    onTapPath: "/adotar_animal_screen");
+                    onTapPath: "/my_pet_animal_screen");
               }),
         );
       },
