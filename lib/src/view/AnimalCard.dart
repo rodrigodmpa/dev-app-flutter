@@ -83,7 +83,7 @@ class _AnimalCardState extends State<AnimalCard> {
                       children: <Widget>[
                         Center(
                             child: Text(
-                                widget.animal.sex.toString().toUpperCase())),
+                                convertSex(widget.animal.sex))),
                       ],
                     ),
                   ),
@@ -93,7 +93,7 @@ class _AnimalCardState extends State<AnimalCard> {
                       children: <Widget>[
                         Center(
                             child:
-                                Text(widget.animal.age.toString() + ' ANOS')),
+                                Text(convertAge(widget.animal.age))),
                       ],
                     ),
                   ),
@@ -103,7 +103,7 @@ class _AnimalCardState extends State<AnimalCard> {
                       children: <Widget>[
                         Center(
                             child: Text(
-                                widget.animal.size.toString().toUpperCase())),
+                                convertSize(widget.animal.size))),
                       ],
                     ),
                   ),
@@ -120,5 +120,20 @@ class _AnimalCardState extends State<AnimalCard> {
         ),
       ),
     );
+  }
+
+  String convertAge(int ageCode){
+    if (ageCode == 0) return "Filhote";
+    else if (ageCode == 1) return "Adulto";
+    else return "Idoso";
+  }
+  String convertSex(int sexCode){
+    if (sexCode == 0) return "Macho";
+    else return "Fêmea";
+  }
+  String convertSize(int sizeCode){
+    if (sizeCode == 0) return "Pequeno";
+    if (sizeCode == 1) return "Médio";
+    else return "Grande ";
   }
 }
