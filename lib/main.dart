@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/view/FavoriteScreen.dart';
 import 'src/view/HomePage.dart';
 import 'src/view/LoginScreen.dart';
 import 'src/view/AdotarScreen.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/main': (context) => LoginScreen(),
         '/adotar': (context)=> AdotarScreen(),
         '/ajudar': (context) => AjudarScreen(),
+        '/favorite': (context) => FavoriteScreen(),
         '/cad_animal': (context) => CadAnimalScreen(),
         '/cad_pessoa': (context) => CadPessoaScreen(),
         '/adotar_animal_screen': (context) => AdotarAnimalScreen(),

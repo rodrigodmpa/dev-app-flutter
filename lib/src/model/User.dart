@@ -8,8 +8,9 @@ class User {
     String password;
     String state;
     String phone;
+    String pictureRoute;
 
-    User({this.id, this.name, this.userName, this.email, this.password, this.state, this.phone, this.idade, this.address});
+    User({this.id, this.name, this.userName, this.email, this.password, this.state, this.phone, this.idade, this.address, this.pictureRoute});
     User.noId({this.name, this.userName, this.email, this.password, this.state, this.phone, this.idade, this.address});
 
   Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{

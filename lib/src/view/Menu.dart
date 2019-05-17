@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:myapp/src/controller/auth/AuthController.dart';
 import '../util/colors.dart';
+
 class Menu extends StatelessWidget {
   const Menu({
     Key key,
@@ -12,21 +12,13 @@ class Menu extends StatelessWidget {
     return new Drawer(
         child: new ListView(
       children: <Widget>[
-        new DrawerHeader(
-          decoration: BoxDecoration(
-            color: primaryColor,
-          ),
-          child: Column(
-            children: <Widget>[
-              new Text(
-                'Meau',
-                style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
-              ),
-              Text(
-                AuthController.loggedUser.name,
-                style: TextStyle(fontSize: 20, color: Color(0xFFFFFFFF)),
-              ),
-            ],
+        UserAccountsDrawerHeader(
+          accountName:
+              Text(AuthController.logged ? AuthController.loggedUser.name : ""),
+          accountEmail: Text(AuthController.logged ? AuthController.loggedUser.email : ""),
+          currentAccountPicture: CircleAvatar(
+            radius: 30,
+            backgroundImage: AuthController.logged && AuthController.userUrl != null ? NetworkImage(AuthController.userUrl) : null,
           ),
         ),
         new ListTile(
@@ -39,8 +31,7 @@ class Menu extends StatelessWidget {
               Text('Animais'),
             ],
           ),
-          onTap: () {
-          },
+          onTap: () {},
         ),
         new ListTile(
           title: Row(
@@ -49,10 +40,12 @@ class Menu extends StatelessWidget {
                 margin: EdgeInsetsDirectional.only(end: 10),
                 child: Icon(Icons.info),
               ),
-              Text('Ajuda'),
+              Text('Ajudar'),
             ],
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, "/ajudar");
+          },
         ),
         new ListTile(
           title: Row(
@@ -65,6 +58,21 @@ class Menu extends StatelessWidget {
             ],
           ),
           onTap: () {
+            Navigator.pushNamed(context, "/adotar");
+          },
+        ),
+        new ListTile(
+          title: Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsetsDirectional.only(end: 10),
+                child: Icon(Icons.favorite),
+              ),
+              Text('Favorite'),
+            ],
+          ),
+          onTap: () {
+            Navigator.pushNamed(context, "/favorite");
           },
         ),
         new Divider(),

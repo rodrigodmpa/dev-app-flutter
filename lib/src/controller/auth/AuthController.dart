@@ -10,12 +10,16 @@ class AuthController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   static bool logged = false;
   static User loggedUser;
+  static String userUrl;
+  static File userImage;
 
   void registerUser(User user, File image) async {
     final String id =
         await signUpWithEmailAndPassword(user.email, user.password);
     final userReference =
         FirebaseDatabase.instance.reference().child("user").child(id);
+
+    String picture = await saveUserImage(id, image);
 
     var newUser = <String, dynamic>{
       'name': user.name,
@@ -26,6 +30,7 @@ class AuthController {
       'password': user.password,
       'state': user.state,
       'phone': user.phone,
+      'pictureRoute': picture
     };
     userReference.set(newUser);
     loggedUser = user;
@@ -49,6 +54,7 @@ class AuthController {
     );
     loggedUser = await getUserData();
     logged = true;
+    await getUserImage(userFirebase.uid);
     return userFirebase != null;
   }
 
@@ -92,10 +98,18 @@ class AuthController {
     return _auth.signOut();
   }
 
+  void getUserImage(String userId) async {
+    StorageReference ref =
+        FirebaseStorage.instance.ref().child("user_picture").child(userId);
+    userUrl = await ref.getDownloadURL();
+  }
+
   Future<String> saveUserImage(String userId, File imageFile) async {
+    userImage = imageFile;
     StorageReference ref =
         FirebaseStorage.instance.ref().child("user_picture").child(userId);
     StorageUploadTask uploadTask = ref.putFile(imageFile);
-    return await (await uploadTask.onComplete).ref.getDownloadURL();
+    userUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
+    return userUrl;
   }
 }
