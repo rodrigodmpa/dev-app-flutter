@@ -17,7 +17,7 @@ class MyPetScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orange,
-          title: Text("Ajudar"),
+          title: Text("Meus pets"),
           elevation: 4,
         ),
         drawer: Menu(),
