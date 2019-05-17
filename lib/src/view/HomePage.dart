@@ -6,6 +6,7 @@ import 'Widgets.dart';
 import '../util/MyFunctions.dart';
 import '../util/colors.dart';
 import '../view/Menu.dart';
+import 'package:myapp/src/controller/auth/AuthController.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -17,79 +18,151 @@ class MyHomePage extends StatelessWidget {
     queryData = MediaQuery.of(context);
     double devicePixelRatio = queryData.devicePixelRatio;
     // createInitialAnimals();
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    if (AuthController.logged){
+      return Scaffold(
         backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      drawer: Menu(
-      ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(46, devicePixelRatio), 0, Dp2Pixel(52, devicePixelRatio)),
-            child: Center(
-              child: Text(
-                "Olá!",
-                style: TextStyle(
-                    fontSize: 72,
-                    color: primaryColor,
-                    fontFamily: "Courgette Regular"),
-              ),
-            ),
-          ),
-          new TextWidget(
-            text: "Bem vindo ao Meau!",
-          ),
-          new TextWidget(
-            text: "Aqui você pode adotar, doar e ajudar",
-          ),
-          new TextWidget(
-            text: "cães e gatos com facilidade.",
-          ),
-          new TextWidget(
-            text: "Qual o seu interesse?",
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48,devicePixelRatio), 0, Dp2Pixel(12, devicePixelRatio)),
-            child: new ButtonWidget(text: "ADOTAR",rota: '/adotar'),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(12, devicePixelRatio)),
-            child: new ButtonWidget(text: "AJUDAR",rota: '/ajudar'),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(44, devicePixelRatio)),
-            child: new ButtonWidget(text: "CADASTRAR ANIMAL",rota: '/cad_animal'),
-          ),
-          FlatButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/main',
-              );
-            },
-            child: Text(
-              "login",
-              style: TextStyle(
-                  color: Color(0xff88c9bf), fontSize: 16, fontFamily: "Roboto"),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, Dp2Pixel(68, devicePixelRatio), 0, Dp2Pixel(32, devicePixelRatio)),
-            child: Container(
-              height: 44,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('asset/Meau_marca_2.png'),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        drawer: Menu(
+        ),
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, Dp2Pixel(46, devicePixelRatio), 0, Dp2Pixel(52, devicePixelRatio)),
+              child: Center(
+                child: Text(
+                  "Olá!",
+                  style: TextStyle(
+                      fontSize: 72,
+                      color: primaryColor,
+                      fontFamily: "Courgette Regular"),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+            new TextWidget(
+              text: "Bem vindo ao Meau!",
+            ),
+            new TextWidget(
+              text: "Aqui você pode adotar, doar e ajudar",
+            ),
+            new TextWidget(
+              text: "cães e gatos com facilidade.",
+            ),
+            new TextWidget(
+              text: "Qual o seu interesse?",
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48,devicePixelRatio), 0, Dp2Pixel(12, devicePixelRatio)),
+              child: new ButtonWidget(text: "ADOTAR",rota: '/adotar'),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(12, devicePixelRatio)),
+              child: new ButtonWidget(text: "AJUDAR",rota: '/ajudar'),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(44, devicePixelRatio)),
+              child: new ButtonWidget(text: "CADASTRAR ANIMAL",rota: '/cad_animal'),
+            ),
+            FlatButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/main',
+                );
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, Dp2Pixel(68, devicePixelRatio), 0, Dp2Pixel(32, devicePixelRatio)),
+              child: Container(
+                height: 44,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('asset/Meau_marca_2.png'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+    else{
+      return Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        drawer: Menu(
+        ),
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, Dp2Pixel(46, devicePixelRatio), 0, Dp2Pixel(52, devicePixelRatio)),
+              child: Center(
+                child: Text(
+                  "Olá!",
+                  style: TextStyle(
+                      fontSize: 72,
+                      color: primaryColor,
+                      fontFamily: "Courgette Regular"),
+                ),
+              ),
+            ),
+            new TextWidget(
+              text: "Bem vindo ao Meau!",
+            ),
+            new TextWidget(
+              text: "Aqui você pode adotar, doar e ajudar",
+            ),
+            new TextWidget(
+              text: "cães e gatos com facilidade.",
+            ),
+            new TextWidget(
+              text: "Qual o seu interesse?",
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, Dp2Pixel(48,devicePixelRatio), 0, Dp2Pixel(12, devicePixelRatio)),
+              child: new ButtonWidget(text: "ADOTAR",rota: '/adotar'),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(12, devicePixelRatio)),
+              child: new ButtonWidget(text: "AJUDAR",rota: '/ajudar'),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, Dp2Pixel(44, devicePixelRatio)),
+              child: new ButtonWidget(text: "CADASTRAR ANIMAL",rota: '/cad_animal'),
+            ),
+            FlatButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/main',
+                );
+              },
+              child: Text(
+                "login",
+                style: TextStyle(
+                    color: Color(0xff88c9bf), fontSize: 16, fontFamily: "Roboto"),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, Dp2Pixel(68, devicePixelRatio), 0, Dp2Pixel(32, devicePixelRatio)),
+              child: Container(
+                height: 44,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('asset/Meau_marca_2.png'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   // void createInitialAnimals(){
