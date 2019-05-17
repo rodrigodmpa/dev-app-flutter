@@ -76,7 +76,7 @@ class _MyPetAnimalScreenState extends State<MyPetAnimalScreen> {
                   shrinkWrap: true,
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext ctxt, int index) {
-                    return UserCard(user: snapshot.data[index]);
+                    return UserCard(user: snapshot.data[index], animalId: animal.id);
                   },
                 ),
               );

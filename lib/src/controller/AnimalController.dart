@@ -36,7 +36,38 @@ class AnimalController {
       'health': animal.health,
       'about': animal.about,
       'pictureRoute': url,
-      'address': "sqn2", //animal.address,
+      'address': AuthController.loggedUser.address, //animal.address,
+      'needs': animal.needs,
+    };
+
+    animalReference.set(newAnimal);
+  }
+
+  void registerAnimalNoPicture(Animal animal, String treeLevel) async {
+    final animalReference = FirebaseDatabase.instance
+        .reference()
+        .child("animal")
+        .child(treeLevel)
+        .child(animal.id);
+
+    var newAnimal = <String, dynamic>{
+      'userId': animal.userId,
+      'name': animal.name,
+      'interest': animal.interest,
+      'species': animal.species,
+      'sex': animal.sex,
+      'size': animal.size,
+      'age': animal.age,
+      'temperament': animal.temperament,
+      'demands': animal.demands,
+      'medicationName': animal.medicationName,
+      'objects': animal.objects,
+      'objectsName': animal.objectsName,
+      'disease': animal.disease,
+      'health': animal.health,
+      'about': animal.about,
+      'pictureRoute': animal.pictureRoute,
+      'address': animal.address, //animal.address,
       'needs': animal.needs,
     };
 
@@ -303,6 +334,68 @@ class AnimalController {
     }
 
     return listOfUsers;
+  }
+
+  void removeIntendAdopt(String animalId) {
+    final animalReference = FirebaseDatabase.instance
+        .reference()
+        .child("intend_adopt")
+        .child(animalId);
+
+    animalReference.remove();
+  }
+
+  Future<Animal> getAnimalById(String animalId, String userId) async {
+    Map<dynamic, dynamic> maps;
+    Animal animal;
+    await FirebaseDatabase.instance
+        .reference()
+        .child('animal')
+        .child('ajudar')
+        .child(animalId)
+        .once()
+        .then(
+      (DataSnapshot snapshot) {
+        maps = snapshot.value;
+        // print('Data : ${snapshot.value.values}');
+      },
+    );
+    if (maps != null) {
+      animal = Animal(
+        id: animalId,
+        userId: userId,
+        about: maps['about'],
+        address: maps['address'],
+        age: maps['age'],
+        demands: maps['demands'],
+        disease: maps['disease'],
+        health: maps['health'],
+        interest: maps['interest'],
+        medicationName: maps['medicationName'],
+        name: maps['name'],
+        needs: maps['needs'],
+        objects: maps['objects'],
+        objectsName: maps['objectsName'],
+        pictureRoute: maps['pictureRoute'],
+        sex: maps['sex'],
+        size: maps['size'],
+        species: maps['species'],
+        temperament: maps['temperament'],
+      );
+    }
+    print(animal);
+    removeAnimalById(animalId);
+    registerAnimalNoPicture(animal, "limbo");
+    return animal;
+  }
+
+  void removeAnimalById(String animalId) {
+    final animalReference = FirebaseDatabase.instance
+        .reference()
+        .child("animal")
+        .child("ajudar")
+        .child(animalId)
+        .remove();
   }
 
   Future<bool> setFavoriteAnimal(String animalId, bool favorite) async {
