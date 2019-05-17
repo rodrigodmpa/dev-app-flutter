@@ -24,22 +24,16 @@ class Menu extends StatelessWidget {
         new ListTile(
           title: Row(
             children: <Widget>[
-              Container(
-                margin: EdgeInsetsDirectional.only(end: 10),
-                child: Icon(Icons.music_note),
-              ),
-              Text('Animais'),
+              Text('Meus pets'),
             ],
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, "/mypet");
+          },
         ),
         new ListTile(
           title: Row(
             children: <Widget>[
-              Container(
-                margin: EdgeInsetsDirectional.only(end: 10),
-                child: Icon(Icons.info),
-              ),
               Text('Ajudar'),
             ],
           ),
@@ -50,10 +44,6 @@ class Menu extends StatelessWidget {
         new ListTile(
           title: Row(
             children: <Widget>[
-              Container(
-                margin: EdgeInsetsDirectional.only(end: 10),
-                child: Icon(Icons.favorite),
-              ),
               Text('Adotar'),
             ],
           ),
@@ -64,10 +54,6 @@ class Menu extends StatelessWidget {
         new ListTile(
           title: Row(
             children: <Widget>[
-              Container(
-                margin: EdgeInsetsDirectional.only(end: 10),
-                child: Icon(Icons.favorite),
-              ),
               Text('Favorite'),
             ],
           ),
