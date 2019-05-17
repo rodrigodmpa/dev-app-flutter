@@ -157,7 +157,7 @@ class _AdotarAnimalScreenState extends State<AdotarAnimalScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          animal.age == 0 ? "Filhote" : animal.age == 1 ? "Adulto" : "Idoso" + ' anos',
+                          animal.age == 0 ? "Filhote" : animal.age == 1 ? "Adulto" : "Idoso",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
